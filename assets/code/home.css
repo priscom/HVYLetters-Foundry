@@ -1,0 +1,47 @@
+body {
+  display: flex;
+  justify-content: center; /* horizontal center */
+  align-items: center; 
+}
+
+.dimensional-box {
+  position: relative;
+  width: 70vw;
+  height: 70vh;
+  background: #f6f6f6;
+}
+
+.layer,
+.middle {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+svg rect {
+  fill: none;
+  stroke: black;
+  stroke-width: 3;
+}
+
+/* transforms for box element */
+.back {
+  transform: translate(-5%, -5%);
+}
+
+.front {
+  transform: translate(5%, 5%);
+}
+
+.middle {
+  display: grid;
+  place-items: center;
+}
+
+.box{
+  fill: none;
+  stroke: #6547ff;
+  stroke-width: 2;
+  vector-effect: non-scaling-stroke;
+}
