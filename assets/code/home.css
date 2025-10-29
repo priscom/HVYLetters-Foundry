@@ -10,96 +10,60 @@
 	/* Smooth scrolliing when anchor links pressed */
 	scroll-behavior: smooth;
 }
-/* Navigation Menu container */
-.menu {
-    display: flex;
-    width: 100%;
-    height: 20vh;
-    gap: -10px;
-    background: white;
-    overflow: visible;
-}
-/* section that contains the pseudo 3D box */
-.dimensional-box {
-  position:relative;
-  height: 100%;
-  width: 100%;
-  /* can be applied to an element with in a flex container */
-  flex: 1 1 0;
-}
-/* makes it so that I can click on my link with out clicking the svg box */
-.dimensional-box svg {
-  pointer-events: none;
-}
-/* styles for the svg element, 
-the vector effect makes it so that even when scaled the line weight stays the same, not sure if I need this anymore, but too scared to change */
-.box {
-  fill: none;
-  stroke:#6547ff;
-  stroke-width: 2;
-  vector-effect: non-scaling-stroke;
-}
-/* this is the text box or content container 8 */
-/* the comma is a css selector, it means add this to anything that has the class middle AND OR layer, this is why all my layers for the box are ontop of each other. https://www.w3schools.com/cssref/sel_element_comma.php */
-.layer,
-.middle {
-  position: absolute;
-  inset: 0;
-  /* centers the text inside the box */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  height: 100%;
-  overflow: visible;
-  text-align: center;
-}
 
-.middle h1 {
-  font-family: 'Arial Black', sans-serif;
-  /* responsive font size */
-  font-size: 5vw; 
-  color: #6547ff;
-  margin: 0;
-}
+    :root {
+        --box-border-color: #6547ff;
+        --box-border-width: 2px;
+        --posX: 20px;
+        --posY: 20px;
+    }
 
-.middle h2 {
-  font-family: 'Arial', sans-serif;
-  /* responsive font size */
-  font-size: 3vw; 
-  color: #6547ff;
-  margin: 20vw;
-}
+    .container {
+		padding: 40px;
+		display: flex;
+		flex-direction: column;
+		gap: 40px;
+	}
 
-.middle h3 {
-  font-family: 'Arial', sans-serif;
-  /* responsive font size */
-  font-size: 2vw; 
-  color: #f67ee8;
-  margin: 35vw;
-}
-/* offset or perspective depth for box element */
-.back {
-  transform: translate(-5%, -5%);
-}
-/* hover effect for box element */
-.dimensional-box:hover .back rect{
-    fill: #ff86a4;
-    transition: fill 0.3s ease;
-}
+    .box{
+        position: relative;
+        width: min(90vw, 900px);
+        padding: 80px;
+         border: var(--box-border-width) solid var(--box-border-color);
+         background: #fff;
+    }
 
-.back rect {
-  fill: transparent;
-  transition: fill 0.3s ease;
-}
+    .box-background{
+        position: absolute;
+        left: var(--posX);
+        top:  var(--posY);
+        width: 100%;
+        height: 100%;
+        border: var(--box-border-width) solid var(--box-border-color);
+        z-index: -1;
+    }
 
-.front {
-  transform: translate(5%, 5%);
-}
+    .corners{
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+    }
 
-/* statement box */
-.statement {
-    width: 100%;
-    height: 80vh;
-    background: rgb(255, 255, 255)
-}
+    .corner{
+        stroke: var(--box-border-color);
+        stroke-width: var(--box-border-width);
+    }
+
+    .box-content{
+        position: relative;
+        text-align: center;
+    }
+
+    /* General styles for the whole page */
+    .h1{
+        font-family: 'Arial Black', sans-serif;
+        font-size: 5vw;
+        color: var(--box-border-color);
+    }

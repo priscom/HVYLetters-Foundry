@@ -26,212 +26,96 @@
 
 	<!-- All your CSS is in this file -->
 	<link rel="stylesheet" href="assets/code/home.css">
+    	<style>
+		:root {
+			--posX: 20px;
+			--posY: 20px;
+			--border-color: pink;
+		}
+		* {
+			padding: 0;
+			margin: 0;
+			box-sizing: border-box;
+		}
+		.container {
+			padding: 40px;
+			display: flex;
+			flex-direction: column;
+			gap: 40px;
+		}
+		.box {
+			position: relative;
+			border: 1px solid var(--border-color);
+			padding: 80px;
+			background-color: white;
+		}
+		.box-background {
+			position: absolute;
+			left: var(--posX);
+			top: var(--posY);
+			width: 100%;
+			height: 100%;
+			border: 1px solid var(--border-color);
+			z-index: -1;
+		}
+		.box-corner {
+			position: absolute;
+			background-color: var(--border-color);
+		}
+		.box-corner-1 {
+			top: 0;
+			left: 0;
+			width: calc(var(--posX) * -1);
+			height: calc(var(--posY) * -1);
+			transform: rotate(180deg);
+			transform-origin: top left;
+		}
+		.box-corner-2 {
+			top: 0;
+			left: 100%;
+			width: var(--posX);
+			height: calc(var(--posY) * -1);
+			/* transform: rotate(-90deg);
+			transform-origin: top left; */
+		}
+		.box-corner-3 {
+			top: 100%;
+			left: 100%;
+			width: var(--posX);
+			height: var(--posY);
+		}
+		.box-corner-4 {
+			top: 100%;
+			left: 0;
+			width: calc(var(--posX) * -1);
+			height: var(--posY);
+			/* transform: rotate(-90deg);
+			transform-origin: top left; */
+			
+		}
+	</style>
 </head>
 
 
 <body>
-    <!-- navigation menu -->
- <nav class="menu">
-<!-- logo box -->
-    <section class="dimensional-box">
-    <div>
-        <!--back box-->
-        <svg class="layer back" preserveAspectRatio="none">
-            <rect class="box" x="10%" y="10%" width="80%" height="80%"/>
-        </svg>
+  <div class="container">
+    <div class="box">
+      <div class="box-background"></div>
 
-        <!--back diagonal-->
-         <svg class="layer back" preserveAspectRatio="none">
-            <line class="box" 
-                  x1="10%" y1="10%" 
-                  x2="20%" y2="20%"/>
-            <line class="box" 
-                  x1="90%" y1="10%" 
-                  x2="100%" y2="20%"/>
-        </svg>
+      <!-- Box Corners, coordinates handled by classes-->
+      <svg class="corners" preserveAspectRatio="none">
+        <line id="corner-tl" class="corner" />
+        <line id="corner-tr" class="corner" />
+        <line id="corner-br" class="corner" />
+        <line id="corner-bl" class="corner" />
+      </svg>
 
-        <!--text box-->
-        <div class="middle">
-            <h1>HVY</h1>
-        </div>
-
-        <!--front diagonal-->
-         <svg class="layer front" preserveAspectRatio="none">
-            <line class="box" 
-                  x1="0%" y1="80%" 
-                  x2="10%" y2="90%"/>
-            <line class="box" 
-                  x1="90%" y1="90%" 
-                  x2="80%" y2="80%"/>
-        </svg>
-
-        <!--front box-->
-        <svg class="layer front" preserveAspectRatio="none">
-            <rect class="box" x="10%" y="10%" width="80%" height="80%"/>
-        </svg>
+      <!-- Any content goes here -->
+      <!-- I think when content was in the middle it felt like it was running from the mouse -->
+      <div class="box-content">
+        <h1>Heavy Letters — type foundry</h1>
+      </div>
     </div>
-    </section>
-<!--blank box-->
-    <section class="dimensional-box">
-    <div>
-        <!--back box-->
-        <svg class="layer back" preserveAspectRatio="none">
-            <rect class="box" x="10%" y="10%" width="80%" height="80%"/>
-        </svg>
-
-        <!--back diagonal-->
-         <svg class="layer back" preserveAspectRatio="none">
-            <line class="box" 
-                  x1="10%" y1="10%" 
-                  x2="20%" y2="20%"/>
-            <line class="box" 
-                  x1="90%" y1="10%" 
-                  x2="100%" y2="20%"/>
-        </svg>
-
-        <!--text box-->
-        <div class="middle">
-            <h1></h1>
-        </div>
-
-        <!--front diagonal-->
-         <svg class="layer front" preserveAspectRatio="none">
-            <line class="box" 
-                  x1="0%" y1="80%" 
-                  x2="10%" y2="90%"/>
-            <line class="box" 
-                  x1="90%" y1="90%" 
-                  x2="80%" y2="80%"/>
-        </svg>
-
-        <!--front box-->
-        <svg class="layer front" preserveAspectRatio="none">
-            <rect class="box" x="10%" y="10%" width="80%" height="80%"/>
-        </svg>
-    </div>
-    </section>
-<!--studio box-->
-    <section class="dimensional-box">
-    <div>
-        <!--back box-->
-        <svg class="layer back" preserveAspectRatio="none">
-            <rect class="box" x="10%" y="10%" width="80%" height="80%"/>
-        </svg>
-
-        <!--back diagonal-->
-         <svg class="layer back" preserveAspectRatio="none">
-            <line class="box" 
-                  x1="10%" y1="10%" 
-                  x2="20%" y2="20%"/>
-            <line class="box" 
-                  x1="90%" y1="10%" 
-                  x2="100%" y2="20%"/>
-        </svg>
-
-        <!--text box-->
-        <div class="middle">
-            <h1>studio</h1>
-        </div>
-
-        <!--front diagonal-->
-         <svg class="layer front" preserveAspectRatio="none">
-            <line class="box" 
-                  x1="0%" y1="80%" 
-                  x2="10%" y2="90%"/>
-            <line class="box" 
-                  x1="90%" y1="90%" 
-                  x2="80%" y2="80%"/>
-        </svg>
-
-        <!--front box-->
-        <svg class="layer front" preserveAspectRatio="none">
-            <rect class="box" x="10%" y="10%" width="80%" height="80%"/>
-        </svg>
-    </div>
-    </section>
-<!--about box-->
-    <section class="dimensional-box">
-    <div>
-        <!--back box-->
-        <svg class="layer back" preserveAspectRatio="none">
-            <rect class="box" x="10%" y="10%" width="80%" height="80%"/>
-        </svg>
-
-        <!--back diagonal-->
-         <svg class="layer back" preserveAspectRatio="none">
-            <line class="box" 
-                  x1="10%" y1="10%" 
-                  x2="20%" y2="20%"/>
-            <line class="box" 
-                  x1="90%" y1="10%" 
-                  x2="100%" y2="20%"/>
-        </svg>
-
-        <!--text box-->
-        <div class="middle">
-            <h1>about</h1>
-        </div>
-
-        <!--front diagonal-->
-         <svg class="layer front" preserveAspectRatio="none">
-            <line class="box" 
-                  x1="0%" y1="80%" 
-                  x2="10%" y2="90%"/>
-            <line class="box" 
-                  x1="90%" y1="90%" 
-                  x2="80%" y2="80%"/>
-        </svg>
-
-        <!--front box-->
-        <svg class="layer front" preserveAspectRatio="none">
-            <rect class="box" x="10%" y="10%" width="80%" height="80%"/>
-        </svg>
-    </div>
-    </section>
- </nav>
-<!-- statement box -->
- <section class="statement">
-       <section class="dimensional-box">
-    <div>
-        <!--back box-->
-        <svg class="layer back" preserveAspectRatio="none">
-            <rect class="box" x="6.5%" y="10%" width="87%" height="80%"/>
-        </svg>
-
-        <!--back diagonal-->
-         <svg class="layer back" preserveAspectRatio="none">
-            <line class="box" 
-                  x1="6.5%" y1="10%" 
-                  x2="16.5%" y2="20%"/>
-            <line class="box" 
-                  x1="93.5%" y1="10%" 
-                  x2="103.5%" y2="20%"/>
-        </svg>
-
-        <!--text box-->
-        <div class="middle">
-            <h2>Hello, welcome to our very in progress foundry. Please help me it took hours for me to figure out how to make a box. I am so confused by CSS selectors I only kind of know why the comma works, but I tried to get rid of it and just write it like a normal class and it broke everything</h2>
-        </div>
-        <div class="middle">
-            <h3>I'm so scared and now I can't get my text to work in a column, I thought I just had to add flex direction to the middle class</h3>
-        </div>
-
-        <!--front diagonal-->
-         <svg class="layer front" preserveAspectRatio="none">
-            <line class="box" 
-                  x1="-3.5%" y1="80%" 
-                  x2="6.5%" y2="90%"/>
-            <line class="box" 
-                  x1="93.5%" y1="90%" 
-                  x2="83.5%" y2="80%"/>
-        </svg>
-
-        <!--front box-->
-        <svg class="layer front" preserveAspectRatio="none">
-            <rect class="box" x="6.5%" y="10%" width="87%" height="80%"/>
-        </svg>
-    </div>
-    </section>
-</section>
+  </div>
 </body>
 </html>
