@@ -69,7 +69,6 @@ the vector effect makes it so that even when scaled the line weight stays the sa
   font-size: 3vw; 
   color: #6547ff;
   margin: 20vw;
-  text-shadow: 0px 100px 100px #f67ee8;
 }
 
 .middle h3 {
@@ -78,11 +77,20 @@ the vector effect makes it so that even when scaled the line weight stays the sa
   font-size: 2vw; 
   color: #f67ee8;
   margin: 35vw;
-  text-shadow: 0px 100px 100px #f67ee8;
 }
 /* offset or perspective depth for box element */
 .back {
   transform: translate(-5%, -5%);
+}
+/* hover effect for box element */
+.dimensional-box:hover .back rect{
+    fill: #ff86a4;
+    transition: fill 0.3s ease;
+}
+
+.back rect {
+  fill: transparent;
+  transition: fill 0.3s ease;
 }
 
 .front {
