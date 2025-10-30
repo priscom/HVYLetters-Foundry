@@ -30,22 +30,119 @@
     .container {
 		padding: 20px;
 		display: flex;
-		flex-direction: row;
+		flex-direction: column;
         align-items: center;
 		gap: 40px;
         overflow: visible;
         height: 60vh;
+        width: 100%;
 	}
+    
+    .specimen-container {
+		padding: 20px;
+		display: flex;
+		flex-direction: column;
+        align-items: center;
+		gap: 40px;
+        overflow: visible;
+
+	}
+
+    @font-face{
+        font-family: 'caltrop';
+        src: url('../fonts/Caltrop-VariableVF.ttf') format('truetype-variations');
+    }
+    
+    .caltrop {
+        font-family: "caltrop";
+        font-variation-settings: "POKE" 0, "SHAR" 0, "SPIN" 0, "wdth" 0;
+        font-size: clamp(2rem, 10vw, 20rem);
+        animation-name: caltrop-animation;
+        animation-duration: 3s;
+        animation-iteration-count: infinite;
+        animation-timing-function: linear;
+        font-weight: 400;
+        color: #6547ff;   
+    }
+
+    @keyframes caltrop-animation {
+        0%, 100% {
+            font-variation-settings: "POKE" 0, "SHAR" 100, "SPIN" 0, "wdth" 0;
+            color: #6547ff;
+        }
+        
+        50% {
+            font-variation-settings: "POKE" 100, "SHAR" 0, "SPIN" 0, "wdth" 100;
+            color: #ff7490;
+        }
+    }
+    @font-face{
+        font-family: 'brescia';
+        src: url('../fonts/Brescia-PictoRippleVF.ttf') format('truetype-variations');
+    }
+
+     .brescia {
+        font-family: "brescia";
+        font-variation-settings: "RIPP" 0;
+        font-size: clamp(2rem, 10vw, 20rem);
+        animation-name: brescia-animation;
+        animation-duration: 3s;
+        animation-iteration-count: infinite;
+        animation-timing-function: linear;
+        font-weight: 400;
+        color: #6547ff;   
+    }
+        @keyframes brescia-animation {
+        0%, 100% {
+            font-variation-settings: "RIPP" 0;
+            color: #6547ff;
+        }
+        
+        50% {
+            font-variation-settings: "RIPP" 100;
+            color: #ff7490;
+        }
+    }
+
+    @font-face{
+        font-family: 'anthony';
+        src: url('../fonts/AnthonyRemixVF.ttf') format('truetype-variations');
+    }
+    .anthony {
+        font-family: "anthony";
+        font-variation-settings: "REMI" 0;
+        font-size: clamp(2rem, 10vw, 20rem);
+        animation-name: anthony-animation;
+        animation-duration: 3s;
+        animation-iteration-count: infinite;
+        animation-timing-function: linear;
+        font-weight: 400;
+        color: #6547ff;   
+    }
+        @keyframes anthony-animation {
+        0%, 100% {
+            font-variation-settings: "REMI" 0;
+            color: #6547ff;
+        }
+        
+        50% {
+            font-variation-settings: "REMI" 100;
+            color: #ff7490;
+        }
+    }
 
     .box{
         position: relative;
         align-items: center;
+        left: calc(var(--posX)/-1.5);
+        top:  calc(var(--posY)/-1.5);
         height: 100%;
         width: 100%;
         padding: 20px;
          border: var(--box-border-width) solid var(--box-border-color);
          background: #ffffff00;
          overflow: visible;
+         pointer-events: none;
     }
 
     .box-background{
@@ -57,9 +154,15 @@
         border: var(--box-border-width) solid var(--box-border-color);
         z-index: -1;
         overflow: visible;
+        background-color: #6647ff00;
+        box-shadow: #6547ff33 10px 10px 10px 0px;
+        pointer-events: none;
     }
 
-   
+    .corners,
+    .box-background {
+    pointer-events: none;
+    }
 
     .corners{
         position: absolute;
@@ -82,12 +185,15 @@
         text-align: center;
         justify-content: center;
         align-items: center;
-        left: calc(var(--posX)/2);
-        top:  calc(var(--posY)/2);
+        left: calc(var(--posX)*.5);
+        top:  calc(var(--posY)*.5);
         width: 100%;
         height: 100%;
-        z-index: -1;
+        z-index: 2;
         overflow: visible;
+        pointer-events: auto;
+        white-space: normal;
+        word-break: break-word;
     }
 
     /* General styles for the whole page */
