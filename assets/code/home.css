@@ -14,23 +14,38 @@
     :root {
         --box-border-color: #6547ff;
         --box-border-width: 2px;
-        --posX: 20px;
-        --posY: 20px;
+        --posX: 40px;
+        --posY: 40px;
+    }
+
+    .menu {
+		padding: 20px;
+        height: 20vh;
+		display: flex;
+		flex-direction: row;
+		gap: 20px;
+        overflow: visible;
     }
 
     .container {
-		padding: 40px;
+		padding: 20px;
 		display: flex;
-		flex-direction: column;
+		flex-direction: row;
+        align-items: center;
 		gap: 40px;
+        overflow: visible;
+        height: 60vh;
 	}
 
     .box{
         position: relative;
-        width: min(90vw, 900px);
-        padding: 80px;
+        align-items: center;
+        height: 100%;
+        width: 100%;
+        padding: 20px;
          border: var(--box-border-width) solid var(--box-border-color);
-         background: #fff;
+         background: #ffffff00;
+         overflow: visible;
     }
 
     .box-background{
@@ -41,7 +56,10 @@
         height: 100%;
         border: var(--box-border-width) solid var(--box-border-color);
         z-index: -1;
+        overflow: visible;
     }
+
+   
 
     .corners{
         position: absolute;
@@ -49,6 +67,8 @@
         width: 100%;
         height: 100%;
         pointer-events: none;
+        overflow: visible;
+        stroke-linecap: round;
     }
 
     .corner{
@@ -58,12 +78,21 @@
 
     .box-content{
         position: relative;
+        display: flex;
         text-align: center;
+        justify-content: center;
+        align-items: center;
+        left: calc(var(--posX)/2);
+        top:  calc(var(--posY)/2);
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+        overflow: visible;
     }
 
     /* General styles for the whole page */
-    .h1{
+    h1 {
         font-family: 'Arial Black', sans-serif;
-        font-size: 5vw;
+        font-size: 3vw;
         color: var(--box-border-color);
     }

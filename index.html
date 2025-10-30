@@ -26,88 +26,97 @@
 
 	<!-- All your CSS is in this file -->
 	<link rel="stylesheet" href="assets/code/home.css">
-    	<style>
-		:root {
-			--posX: 20px;
-			--posY: 20px;
-			--border-color: pink;
-		}
-		* {
-			padding: 0;
-			margin: 0;
-			box-sizing: border-box;
-		}
-		.container {
-			padding: 40px;
-			display: flex;
-			flex-direction: column;
-			gap: 40px;
-		}
-		.box {
-			position: relative;
-			border: 1px solid var(--border-color);
-			padding: 80px;
-			background-color: white;
-		}
-		.box-background {
-			position: absolute;
-			left: var(--posX);
-			top: var(--posY);
-			width: 100%;
-			height: 100%;
-			border: 1px solid var(--border-color);
-			z-index: -1;
-		}
-		.box-corner {
-			position: absolute;
-			background-color: var(--border-color);
-		}
-		.box-corner-1 {
-			top: 0;
-			left: 0;
-			width: calc(var(--posX) * -1);
-			height: calc(var(--posY) * -1);
-			transform: rotate(180deg);
-			transform-origin: top left;
-		}
-		.box-corner-2 {
-			top: 0;
-			left: 100%;
-			width: var(--posX);
-			height: calc(var(--posY) * -1);
-			/* transform: rotate(-90deg);
-			transform-origin: top left; */
-		}
-		.box-corner-3 {
-			top: 100%;
-			left: 100%;
-			width: var(--posX);
-			height: var(--posY);
-		}
-		.box-corner-4 {
-			top: 100%;
-			left: 0;
-			width: calc(var(--posX) * -1);
-			height: var(--posY);
-			/* transform: rotate(-90deg);
-			transform-origin: top left; */
-			
-		}
-	</style>
 </head>
 
-
 <body>
+        <!-- navigation menu -->
+ <nav class="menu">
+<!-- logo box -->
+ <div class="box">
+      <div class="box-background"></div>
+
+      <!-- Box Corners, coordinates handled by classes-->
+      <svg class="corners" preserveAspectRatio="none">
+        <line class="corner corner-tl" />
+        <line class="corner corner-tr" />
+        <line class="corner corner-br" />
+        <line class="corner corner-bl" />
+      </svg>
+
+      <!-- Any content goes here -->
+      <!-- I think when content was in the middle it felt like it was running from the mouse -->
+      <div class="box-content">
+        <h1>HVY</h1>
+      </div>
+    </div>
+
+<!-- blank box -->
+    <div class="box">
+      <div class="box-background"></div>
+
+      <!-- Box Corners, coordinates handled by classes-->
+      <svg class="corners" preserveAspectRatio="none">
+        <line class="corner corner-tl" />
+        <line class="corner corner-tr" />
+        <line class="corner corner-br" />
+        <line class="corner corner-bl" />
+      </svg>
+
+      <!-- Any content goes here -->
+      <!-- I think when content was in the middle it felt like it was running from the mouse -->
+      <div class="box-content">
+        <h1> </h1>
+      </div>
+    </div>
+
+<!-- studio box -->
+    <div class="box">
+      <div class="box-background"></div>
+
+      <!-- Box Corners, coordinates handled by classes-->
+      <svg class="corners" preserveAspectRatio="none">
+        <line class="corner corner-tl" />
+        <line class="corner corner-tr" />
+        <line class="corner corner-br" />
+        <line class="corner corner-bl" />
+      </svg>
+
+      <!-- Any content goes here -->
+      <!-- I think when content was in the middle it felt like it was running from the mouse -->
+      <div class="box-content">
+        <h1>studio</h1>
+      </div>
+    </div>
+<!-- about box -->
+    <div class="box">
+      <div class="box-background"></div>
+
+      <!-- Box Corners, coordinates handled by classes-->
+      <svg class="corners" preserveAspectRatio="none">
+        <line class="corner corner-tl" />
+        <line class="corner corner-tr" />
+        <line class="corner corner-br" />
+        <line class="corner corner-bl" />
+      </svg>
+
+      <!-- Any content goes here -->
+      <!-- I think when content was in the middle it felt like it was running from the mouse -->
+      <div class="box-content">
+        <h1>about</h1>
+      </div>
+    </div>
+ </nav>
+    
   <div class="container">
     <div class="box">
       <div class="box-background"></div>
 
       <!-- Box Corners, coordinates handled by classes-->
       <svg class="corners" preserveAspectRatio="none">
-        <line id="corner-tl" class="corner" />
-        <line id="corner-tr" class="corner" />
-        <line id="corner-br" class="corner" />
-        <line id="corner-bl" class="corner" />
+        <line class="corner corner-tl" />
+        <line class="corner corner-tr" />
+        <line class="corner corner-br" />
+        <line class="corner corner-bl" />
       </svg>
 
       <!-- Any content goes here -->
@@ -116,6 +125,20 @@
         <h1>Heavy Letters — type foundry</h1>
       </div>
     </div>
-  </div>
+  <!-- Mouse movement script -->
+	<script>
+        window.addEventListener('mousemove', (e) => {
+            const percentX = e.clientX / window.innerWidth;
+            const percentY = e.clientY / window.innerHeight;
+
+            // Select all boxes (or multiple classes)
+            const boxes = document.querySelectorAll('.box');
+
+        boxes.forEach(box => {
+            box.style.setProperty('--posX', percentX * 80 - 40 + 'px');
+            box.style.setProperty('--posY', percentY * 80 - 40 + 'px');
+        });
+        });
+	</script>
 </body>
 </html>
