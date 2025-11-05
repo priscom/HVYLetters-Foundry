@@ -1,0 +1,318 @@
+* {
+	/* Fixing the box-sizing issue */
+	/* Explanation: https://www.w3schools.com/css/css3_box-sizing.asp */
+	box-sizing: border-box;
+
+	/* Setting all default margin and padding to 0, because elements have pretty arbitary initial settings */
+	margin: 0;
+	padding: 0;
+
+	/* Smooth scrolliing when anchor links pressed */
+	scroll-behavior: smooth;
+}
+
+    :root {
+        --box-border-color: #6547ff;
+        --box-border-width: 2px;
+        --posX: 40px;
+        --posY: 40px;
+        --scaleX: 1;
+        --scaleY: 1;
+    }
+
+    @font-face {
+        font-family: 'ronzino';
+        src: url('../fonts/Ronzino-Regular.woff2') format('woff2');
+        font-weight: 400;
+    }
+
+   @font-face {
+        font-family: 'ronzino';
+        src: url('../fonts/Ronzino-Bold.woff2') format('woff2');
+        font-weight: 700;
+    }
+
+    body {
+        background: #000000;
+        overflow: visible;
+    }
+
+    .menu {
+		padding: 40px;
+        height: 20vh;
+		display: flex;
+		flex-direction: row;
+		gap: 20px;
+        overflow: visible;
+    }
+
+    .container {
+		padding: 40px;
+		display: flex;
+		flex-direction: column;
+        align-items: center;
+		gap: 40px;
+        overflow: visible;
+        height: 60vh;
+        width: 100%;
+	}
+    
+    .specimen-container {
+		padding: 40px;
+		display: flex;
+		flex-direction: column;
+        align-items: center;
+		gap: 40px;
+        overflow: visible;
+
+	}
+
+    @font-face{
+        font-family: 'caltrop';
+        src: url('../fonts/Caltrop-VariableVF.ttf') format('truetype-variations');
+    }
+    
+    .caltrop {
+        font-family: "caltrop";
+        font-variation-settings: "POKE" 50, "SHAR" 50, "SPIN" 0, "wdth" 0;
+        font-size: clamp(2rem, 10vw, 20rem);
+        font-weight: 400;
+        color: #6547ff;
+        transition: all 3s ease-in-out;   
+    }
+
+    .caltrop:hover {
+        cursor: pointer;
+        animation-name: caltrop-animation;
+        animation-duration: 3s;
+        animation-iteration-count: infinite;
+        animation-timing-function: linear;
+    }
+
+    @keyframes caltrop-animation {
+        0%, 100% {
+            font-variation-settings: "POKE" 50, "SHAR" 50, "SPIN" 0, "wdth" 0;
+            color: #6547ff;
+        }
+
+        25% {
+            font-variation-settings: "POKE" 100, "SHAR" 100, "SPIN" 100, "wdth" 0;
+            color: #ff7490;
+        }
+        
+        50% {
+            font-variation-settings: "POKE" 0, "SHAR" 0, "SPIN" 0, "wdth" 100;
+            color: #ff7490;
+        }
+
+        75% {
+            font-variation-settings: "POKE" 50, "SHAR" 50, "SPIN" 0, "wdth" 0;
+            color: #ff7490;
+        }
+    }
+    @font-face{
+        font-family: 'brescia';
+        src: url('../fonts/Brescia-PictoRippleVF.ttf') format('truetype-variations');
+    }
+
+     .brescia {
+        font-family: "brescia";
+        font-variation-settings: "RIPP" 0;
+        font-size: clamp(2rem, 10vw, 20rem);
+        font-weight: 400;
+        color: #6547ff;
+        transition: all 3s ease-in-out;   
+    }
+
+    .brescia:hover {animation-name: brescia-animation;
+        animation-duration: 3s;
+        animation-iteration-count: infinite;
+        animation-timing-function: linear;
+        cursor: pointer;
+        transition: all 3s ease-in-out;
+    }
+        @keyframes brescia-animation {
+        0%, 100% {
+            font-variation-settings: "RIPP" 0;
+            color: #6547ff;
+        }
+        
+        50% {
+            font-variation-settings: "RIPP" 100;
+            color: #ff7490;
+        }
+    }
+
+    @font-face{
+        font-family: 'anthony';
+        src: url('../fonts/AnthonyRemixVF.ttf') format('truetype-variations');
+    }
+    .anthony {
+        font-family: "anthony";
+        font-variation-settings: "REMI" 0;
+        font-size: clamp(2rem, 10vw, 20rem);
+        font-weight: 400;
+        color: #6547ff;   
+    }
+
+    .anthony:hover {
+        animation-name: anthony-animation;
+        animation-duration: 3s;
+        animation-iteration-count: infinite;
+        animation-timing-function: linear;
+        cursor: pointer;
+        transition: all 3s ease-in-out;
+    }
+
+        @keyframes anthony-animation {
+        0%, 100% {
+            font-variation-settings: "REMI" 0;
+            color: #6547ff;
+        }
+        
+        50% {
+            font-variation-settings: "REMI" 100;
+            color: #ff7490;
+        }
+    }
+
+    .box{
+        position: relative;
+        align-items: center;
+        left: calc(var(--posX)/-1.5);
+        top:  calc(var(--posY)/-1.5);
+        height: 100%;
+        width: 100%;
+        padding: 20px;
+         border: var(--box-border-width) solid var(--box-border-color);
+         background: #ffffff00;
+         overflow: visible;
+         pointer-events: none;
+    }
+
+    .box-background{
+        position: absolute;
+        left: var(--posX);
+        top:  var(--posY);
+        width: 100%;
+        height: 100%;
+        border: var(--box-border-width) solid var(--box-border-color);
+        z-index: -1;
+        overflow: visible;
+        background-color: #6647ff00;
+        box-shadow: #6547ff33 10px 10px 10px 0px;
+        pointer-events: none;
+    }
+
+    .corners,
+    .box-background {
+    pointer-events: none;
+    }
+
+    .corners{
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        overflow: visible;
+        stroke-linecap: round;
+    }
+
+    .corner{
+        stroke: var(--box-border-color);
+        stroke-width: var(--box-border-width);
+        			position: absolute;
+			/* background-color: var(--border-color); */
+            overflow: visible;
+    }
+            .corner::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath d='M1,1 L19,19' stroke='pink' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E");
+            background-size: 100% 100%;
+        }
+        .corners {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            overflow: visible;
+        }
+
+        .corner {
+            stroke: var(--box-border-color);
+            stroke-width: var(--box-border-width);
+            vector-effect: non-scaling-stroke;
+            position: absolute;
+            overflow: visible;
+        }
+    		.corner-tl {
+			top: 0;
+			left: 0;
+			width: 20px;
+			height: 20px;
+			transform: scale(var(--scaleX, 1), var(--scaleY, 1));
+			transform-origin: top left;
+            overflow: visible;
+		}
+		.corner-tr {
+			top: 0;
+			left: 100%;
+			height: 20px;
+			width: 20px;
+			/* preserve the corner rotation and apply the same scale mapping */
+			transform: scale(var(--scaleX, 1), var(--scaleY, 1));
+			transform-origin: top left;
+		}
+		.corner-bl {
+			top: 100%;
+			left: 100%;
+			width: 20px;
+			height: 20px;
+			transform: scale(var(--scaleX, 1), var(--scaleY, 1));
+            /* background-color: turquoise; */
+            transform-origin: top left;
+		}
+		.corner-br {
+			top: 100%;
+			left: 0;
+			height: 20px;
+			width: 20px;
+			transform: scale(var(--scaleX, 1), var(--scaleY, 1));
+			transform-origin: top left;
+		}
+
+    .box-content{
+        position: relative;
+        display: flex;
+        text-align: center;
+        justify-content: center;
+        align-items: center;
+        left: calc(var(--posX)*.5);
+        top:  calc(var(--posY)*.5);
+        width: 100%;
+        height: 100%;
+        z-index: 2;
+        overflow: visible;
+        pointer-events: auto;
+        white-space: normal;
+        word-break: break-word;
+    }
+
+    /* General styles for the whole page */
+    h1 {
+        font-family: 'ronzino';
+        font-weight: 700;
+        font-size: 3vw;
+        color: var(--box-border-color);
+    }
+
+    h2 {
+        font-family: 'ronzino';
+        font-weight: 400;
+        font-size: 2vw;
+        color: var(--box-border-color);
+    }

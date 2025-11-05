@@ -36,10 +36,12 @@
       <div class="box-background"></div>
 
       <!-- Box Corners, coordinates handled by classes-->
-			<div class="corner corner-tl"></div>
-			<div class="corner corner-tr"></div>
-			<div class="corner corner-br"></div>
-			<div class="corner corner-bl"></div>
+      <svg class="corners" preserveAspectRatio="none">
+        <line class="corner corner-tl" />
+        <line class="corner corner-tr" />
+        <line class="corner corner-br" />
+        <line class="corner corner-bl" />
+      </svg>
 
       <!-- Any content goes here -->
       <!-- I think when content was in the middle it felt like it was running from the mouse -->
@@ -53,10 +55,12 @@
       <div class="box-background"></div>
 
       <!-- Box Corners, coordinates handled by classes-->
-			<div class="corner corner-tl"></div>
-			<div class="corner corner-tr"></div>
-			<div class="corner corner-br"></div>
-			<div class="corner corner-bl"></div>
+      <svg class="corners" preserveAspectRatio="none">
+        <line class="corner corner-tl" />
+        <line class="corner corner-tr" />
+        <line class="corner corner-br" />
+        <line class="corner corner-bl" />
+      </svg>
 
       <!-- Any content goes here -->
       <!-- I think when content was in the middle it felt like it was running from the mouse -->
@@ -70,10 +74,12 @@
       <div class="box-background"></div>
 
       <!-- Box Corners, coordinates handled by classes-->
-			<div class="corner corner-tl"></div>
-			<div class="corner corner-tr"></div>
-			<div class="corner corner-br"></div>
-			<div class="corner corner-bl"></div>
+      <svg class="corners" preserveAspectRatio="none">
+        <line class="corner corner-tl" />
+        <line class="corner corner-tr" />
+        <line class="corner corner-br" />
+        <line class="corner corner-bl" />
+      </svg>
 
       <!-- Any content goes here -->
       <!-- I think when content was in the middle it felt like it was running from the mouse -->
@@ -86,10 +92,12 @@
       <div class="box-background"></div>
 
       <!-- Box Corners, coordinates handled by classes-->
-			<div class="corner corner-tl"></div>
-			<div class="corner corner-tr"></div>
-			<div class="corner corner-br"></div>
-			<div class="corner corner-bl"></div>
+      <svg class="corners" preserveAspectRatio="none">
+        <line class="corner corner-tl" />
+        <line class="corner corner-tr" />
+        <line class="corner corner-br" />
+        <line class="corner corner-bl" />
+      </svg>
 
       <!-- Any content goes here -->
       <!-- I think when content was in the middle it felt like it was running from the mouse -->
@@ -104,10 +112,12 @@
       <div class="box-background"></div>
 
       <!-- Box Corners, coordinates handled by classes-->
-			<div class="corner corner-tl"></div>
-			<div class="corner corner-tr"></div>
-			<div class="corner corner-br"></div>
-			<div class="corner corner-bl"></div>
+      <svg class="corners" preserveAspectRatio="none">
+        <line class="corner corner-tl" />
+        <line class="corner corner-tr" />
+        <line class="corner corner-br" />
+        <line class="corner corner-bl" />
+      </svg>
 
       <!-- Any content goes here -->
       <!-- I think when content was in the middle it felt like it was running from the mouse -->
@@ -123,10 +133,12 @@
         <div class="box-background"></div>
 
         <!-- Box Corners, coordinates handled by classes-->
-			<div class="corner corner-tl"></div>
-			<div class="corner corner-tr"></div>
-			<div class="corner corner-br"></div>
-			<div class="corner corner-bl"></div>
+        <svg class="corners" preserveAspectRatio="none">
+        <line class="corner corner-tl" />
+        <line class="corner corner-tr" />
+        <line class="corner corner-br" />
+        <line class="corner corner-bl" />
+        </svg>
 
         <!-- Any content goes here -->
         <!-- I think when content was in the middle it felt like it was running from the mouse -->
@@ -139,10 +151,12 @@
         <div class="box-background"></div>
 
         <!-- Box Corners, coordinates handled by classes-->
-			<div class="corner corner-tl"></div>
-			<div class="corner corner-tr"></div>
-			<div class="corner corner-br"></div>
-			<div class="corner corner-bl"></div>
+        <svg class="corners" preserveAspectRatio="none">
+        <line class="corner corner-tl" />
+        <line class="corner corner-tr" />
+        <line class="corner corner-br" />
+        <line class="corner corner-bl" />
+        </svg>
 
         <!-- Any content goes here -->
         <!-- I think when content was in the middle it felt like it was running from the mouse -->
@@ -155,10 +169,12 @@
         <div class="box-background"></div>
 
         <!-- Box Corners, coordinates handled by classes-->
-			<div class="corner corner-tl"></div>
-			<div class="corner corner-tr"></div>
-			<div class="corner corner-br"></div>
-			<div class="corner corner-bl"></div>
+        <svg class="corners" preserveAspectRatio="none">
+        <line class="corner corner-tl" />
+        <line class="corner corner-tr" />
+        <line class="corner corner-br" />
+        <line class="corner corner-bl" />
+        </svg>
 
         <!-- Any content goes here -->
         <!-- I think when content was in the middle it felt like it was running from the mouse -->
@@ -169,23 +185,18 @@
     </div>   
   <!-- Mouse movement script -->
 	<script>
-window.addEventListener('mousemove', (e) => {
-    const percentX = e.clientX / window.innerWidth; // 0..1
-    const percentY = e.clientY / window.innerHeight; // 0..1
+        window.addEventListener('mousemove', (e) => {
+            const percentX = e.clientX / window.innerWidth;
+            const percentY = e.clientY / window.innerHeight;
 
-    // map 0..1 -> -1..1 so scale mirrors the pos mapping
-    const sx = (percentX * 2 - 1).toFixed(3);
-    const sy = (percentY * 2 - 1).toFixed(3);
+            // Select all boxes (or multiple classes)
+            const boxes = document.querySelectorAll('.box');
 
-    // Select all boxes and update each one
-    const boxes = document.querySelectorAll('.box');
-    boxes.forEach(box => {
-        box.style.setProperty('--scaleX', sx);
-        box.style.setProperty('--scaleY', sy);
-        box.style.setProperty('--posX', percentX * 40 - 20 + "px");
-        box.style.setProperty('--posY', percentY * 40 - 20 + "px");
-    });
-});
+        boxes.forEach(box => {
+            box.style.setProperty('--posX', percentX * 80 - 40 + 'px');
+            box.style.setProperty('--posY', percentY * 80 - 40 + 'px');
+        });
+        });
 	</script>
 </body>
 </html>
