@@ -18,8 +18,18 @@
         --posY: 40px;
     }
 
+    @font-face {
+        font-family: 'ronzino';
+        src: url();
+    }
+
+    body {
+        background: #000000;
+        overflow: visible;
+    }
+
     .menu {
-		padding: 20px;
+		padding: 40px;
         height: 20vh;
 		display: flex;
 		flex-direction: row;
@@ -28,7 +38,7 @@
     }
 
     .container {
-		padding: 20px;
+		padding: 40px;
 		display: flex;
 		flex-direction: column;
         align-items: center;
@@ -39,7 +49,7 @@
 	}
     
     .specimen-container {
-		padding: 20px;
+		padding: 40px;
 		display: flex;
 		flex-direction: column;
         align-items: center;
@@ -55,24 +65,39 @@
     
     .caltrop {
         font-family: "caltrop";
-        font-variation-settings: "POKE" 0, "SHAR" 0, "SPIN" 0, "wdth" 0;
+        font-variation-settings: "POKE" 50, "SHAR" 50, "SPIN" 0, "wdth" 0;
         font-size: clamp(2rem, 10vw, 20rem);
+        font-weight: 400;
+        color: #6547ff;
+        transition: all 3s ease-in-out;   
+    }
+
+    .caltrop:hover {
+        cursor: pointer;
         animation-name: caltrop-animation;
         animation-duration: 3s;
         animation-iteration-count: infinite;
         animation-timing-function: linear;
-        font-weight: 400;
-        color: #6547ff;   
     }
 
     @keyframes caltrop-animation {
         0%, 100% {
-            font-variation-settings: "POKE" 0, "SHAR" 100, "SPIN" 0, "wdth" 0;
+            font-variation-settings: "POKE" 50, "SHAR" 50, "SPIN" 0, "wdth" 0;
             color: #6547ff;
+        }
+
+        25% {
+            font-variation-settings: "POKE" 100, "SHAR" 100, "SPIN" 100, "wdth" 0;
+            color: #ff7490;
         }
         
         50% {
-            font-variation-settings: "POKE" 100, "SHAR" 0, "SPIN" 0, "wdth" 100;
+            font-variation-settings: "POKE" 0, "SHAR" 0, "SPIN" 0, "wdth" 100;
+            color: #ff7490;
+        }
+
+        75% {
+            font-variation-settings: "POKE" 50, "SHAR" 50, "SPIN" 0, "wdth" 0;
             color: #ff7490;
         }
     }
@@ -85,12 +110,17 @@
         font-family: "brescia";
         font-variation-settings: "RIPP" 0;
         font-size: clamp(2rem, 10vw, 20rem);
-        animation-name: brescia-animation;
+        font-weight: 400;
+        color: #6547ff;
+        transition: all 3s ease-in-out;   
+    }
+
+    .brescia:hover {animation-name: brescia-animation;
         animation-duration: 3s;
         animation-iteration-count: infinite;
         animation-timing-function: linear;
-        font-weight: 400;
-        color: #6547ff;   
+        cursor: pointer;
+        transition: all 3s ease-in-out;
     }
         @keyframes brescia-animation {
         0%, 100% {
@@ -112,13 +142,19 @@
         font-family: "anthony";
         font-variation-settings: "REMI" 0;
         font-size: clamp(2rem, 10vw, 20rem);
+        font-weight: 400;
+        color: #6547ff;   
+    }
+
+    .anthony:hover {
         animation-name: anthony-animation;
         animation-duration: 3s;
         animation-iteration-count: infinite;
         animation-timing-function: linear;
-        font-weight: 400;
-        color: #6547ff;   
+        cursor: pointer;
+        transition: all 3s ease-in-out;
     }
+
         @keyframes anthony-animation {
         0%, 100% {
             font-variation-settings: "REMI" 0;
