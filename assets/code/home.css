@@ -11,13 +11,38 @@
     scroll-behavior: smooth;
 }
 
+/* had to use AI to figure out how to get smmoth animation for this property */
+/* but I looked up w3 school to try and figure out why this works https://www.w3schools.com/css/css3_property.asp unfortunately I still don't know */
+@property --gradient-angle {
+  syntax: "<angle>";
+  inherits: false;
+  initial-value: 0deg;
+}
+@property --gradient-angle-back {
+  syntax: "<angle>";
+  inherits: false;
+  initial-value: 60deg;
+}
+
 :root {
+    --gradient-angle: 0deg;
+    --gradient-angle-back: 60deg;
     --box-border-color: #6547ff;
+    --box-border-gradient: linear-gradient(var(--gradient-angle), #000000 0%, #6547ff 50%, #000000 100%);
+    --box-border-gradient-back: linear-gradient(var(--gradient-angle-back), #000000 0%, #6547ff 50%, #000000 100%);
     --box-border-width: 2px;
     --posX: 20px;
     --posY: 20px;
     --scaleX: 1;
     --scaleY: 1;
+    animation: rotateGradient 20s linear infinite;
+}
+
+@keyframes rotateGradient {
+  to {
+    --gradient-angle: 360deg;
+    --gradient-angle-back: 420deg;
+  }
 }
 
 @font-face {
@@ -207,7 +232,8 @@ body {
     height: 100%;
     width: 100%;
     padding: 20px;
-    border: var(--box-border-width) solid var(--box-border-color);
+    border: var(--box-border-width) solid transparent;
+    border-image: var(--box-border-gradient) 1;
     background: #ffffff00;
     overflow: visible;
     pointer-events: none;
@@ -219,12 +245,15 @@ body {
     top: var(--posY);
     width: 100%;
     height: 100%;
-    border: var(--box-border-width) solid var(--box-border-color);
+    border: var(--box-border-width) solid transparent;
+    border-image: var(--box-border-gradient-back) 1; 
+    /* https://www.w3schools.com/css/css3_border_images.asp? */
     z-index: -1;
     overflow: visible;
     background-color: #6647ff00;
     /* box-shadow: #6547ff33 10px 10px 10px 0px; */
     pointer-events: none;
+    animation: rotateGradient 6s linear infinite;
 }
 
 .corners,
@@ -254,7 +283,9 @@ body {
     content: '';
     position: absolute;
     inset: 0;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath d='M0,0 L20,20' stroke='%236547ff' stroke-width='4' stroke-linecap='round'/%3E%3C/svg%3E");
+    /* barely understand what some of this svg stuff means had to ask the AI */
+background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0%' y1='0%' x2='100%' y2='100%'%3E%3Cstop offset='0%' stop-color='%23000000'/%3E%3Cstop offset='50%' stop-color='%236547ff'/%3E%3Cstop offset='100%' stop-color='%23000000'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cpath d='M0,0 L20,20' stroke='url(%23g)' stroke-width='4' stroke-linecap='round'/%3E%3C/svg%3E");
+
     background-size: 100% 100%;
 }
 
