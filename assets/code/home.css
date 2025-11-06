@@ -35,10 +35,21 @@
 body {
     background: #000000;
     overflow: visible;
+    gap: 20px;
+  padding: 40px;
+}
+.hvy-video {
+  width: 120%;
+  height: 120%;
+  display: block;
+  object-fit: fill;
+  pointer-events: none;
+  will-change: transform, opacity;
 }
 
 .menu {
-    padding: 40px;
+        padding-bottom: 20px;
+    padding-bottom: 20px;
     height: 20vh;
     display: flex;
     flex-direction: row;
@@ -47,22 +58,24 @@ body {
 }
 
 .container {
-    padding: 40px;
+        padding-bottom: 20px;
+    padding-bottom: 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 40px;
+    gap: 20px;
     overflow: visible;
     height: 60vh;
     width: 100%;
 }
 
 .specimen-container {
-    padding: 40px;
+    padding-bottom: 20px;
+    padding-bottom: 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 40px;
+    gap: 20px;
     overflow: visible;
 
 }
@@ -241,7 +254,7 @@ body {
     content: '';
     position: absolute;
     inset: 0;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath d='M0,0 L20,20' stroke='%236547ff' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E");
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath d='M0,0 L20,20' stroke='%236547ff' stroke-width='4' stroke-linecap='round'/%3E%3C/svg%3E");
     background-size: 100% 100%;
 }
 
@@ -277,7 +290,6 @@ body {
     left: 100%;
     height: 20px;
     width: 20px;
-    /* preserve the corner rotation and apply the same scale mapping */
     transform: scale(var(--scaleX, 1), var(--scaleY, 1));
     transform-origin: top left;
 }
@@ -304,6 +316,7 @@ body {
 .box-content {
     position: relative;
     display: flex;
+    flex-direction: column;
     text-align: center;
     justify-content: center;
     align-items: center;
@@ -316,6 +329,38 @@ body {
     pointer-events: auto;
     white-space: normal;
     word-break: break-word;
+}
+.Specimen-button-container {
+    position: relative;
+    top: center;
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
+    /* left: 85%; */
+    width: 100%;
+}
+.button {
+    font-family: 'ronzino';
+    font-weight: 700;
+    font-size: 1vw;
+    color: var(--box-border-color);
+    /* background: var(--box-border-color); */
+    border: var(--box-border-width) solid var(--box-border-color);
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+    border-radius: 9999px;
+       transition: ease-in-out;
+    transition-duration: .5s;
+}
+.button:hover {
+    background: #ff7490;;
+    border-color: #ff7490;;
+    color: #000000;
+    transition: ease-in-out;
+    transition-duration: .5s;
 }
 
 /* General styles for the whole page */
