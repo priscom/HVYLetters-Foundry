@@ -110,10 +110,21 @@
   </nav>
   <!-- welcome statement -->
   <div class="container">
+    <div class="box">
+      <div class="box-background"></div>
+
+      <!-- Box Corners, coordinates handled by classes-->
+      <div class="corner corner-tl"></div>
+      <div class="corner corner-tr"></div>
+      <div class="corner corner-br"></div>
+      <div class="corner corner-bl"></div>
+
+      <!-- Any content goes here -->
+      <!-- I think when content was in the middle it felt like it was running from the mouse -->
       <div class="box-content">
         <img src="assets/media/Intro-Text-Image.webp" alt="Welcome to HVY Letters Foundry" class="intro-text-image">
       </div>
-
+    </div>
   </div>
   <!-- specimen containt -->
   <div class="specimen-container">
@@ -189,7 +200,7 @@
       const sy = (percentY * 2 - 1).toFixed(3);
 
       // selector looks through all .box elements
-      const boxes = document.querySelectorAll('.box, .container');
+      const boxes = document.querySelectorAll('.box');
       boxes.forEach(box => {
         box.style.setProperty('--scaleX', sx);
         box.style.setProperty('--scaleY', sy);
