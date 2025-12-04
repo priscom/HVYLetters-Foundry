@@ -30,18 +30,20 @@
 </head>
 
 <body>
-<nav class="menu">
-  <!-- LEFT: logo box -->
-  <div class="menu-left">
+  <!-- navigation menu -->
+  <nav class="menu">
+    <!-- logo box -->
     <div class="box">
-      <!-- corners -->
       <div class="box-background"></div>
 
+      <!-- Box Corners, coordinates handled by classes-->
       <div class="corner corner-tl"></div>
       <div class="corner corner-tr"></div>
       <div class="corner corner-br"></div>
       <div class="corner corner-bl"></div>
-      <!-- /corners -->
+
+      <!-- Any content goes here -->
+      <!-- I think when content was in the middle it felt like it was running from the mouse -->
       <div class="box-content">
         <video class="hvy-video" autoplay muted loop playsinline preload="auto"
           aria-label="HVY logo animation">
@@ -49,66 +51,137 @@
         </video>
       </div>
     </div>
-  </div>
 
-  <!-- RIGHT: 2×2 grid of nav boxes -->
-  <div class="menu-right">
-    <!-- box 1 -->
-    <div class="box nav-box">
+    <!-- blank box -->
+    <div class="box">
       <div class="box-background"></div>
+
+      <!-- Box Corners, coordinates handled by classes-->
       <div class="corner corner-tl"></div>
       <div class="corner corner-tr"></div>
       <div class="corner corner-br"></div>
       <div class="corner corner-bl"></div>
+
+      <!-- Any content goes here -->
+      <!-- I think when content was in the middle it felt like it was running from the mouse -->
       <div class="box-content">
-        <video class="hvy-video" autoplay muted loop playsinline preload="auto"
+        <h1> </h1>
+      </div>
+    </div>
+
+    <!-- studio box -->
+    <div class="box">
+      <div class="box-background"></div>
+
+      <!-- Box Corners, coordinates handled by classes-->
+      <div class="corner corner-tl"></div>
+      <div class="corner corner-tr"></div>
+      <div class="corner corner-br"></div>
+      <div class="corner corner-bl"></div>
+
+      <!-- Any content goes here -->
+      <!-- I think when content was in the middle it felt like it was running from the mouse -->
+      <div class="box-content">
+        <video class="hvy-video" autoplay muted loop playsinline preload="auto" 
           aria-label="Studio animation">
           <source src="assets/media/Studio_Duotone-Alpha-Anim-Small0001-0250.webm" type="video/webm">
         </video>
       </div>
     </div>
-
-    <!-- box 2 -->
-    <div class="box nav-box">
+    <!-- about box -->
+    <div class="box">
       <div class="box-background"></div>
+
+      <!-- Box Corners, coordinates handled by classes-->
       <div class="corner corner-tl"></div>
       <div class="corner corner-tr"></div>
       <div class="corner corner-br"></div>
       <div class="corner corner-bl"></div>
+
+      <!-- Any content goes here -->
+      <!-- I think when content was in the middle it felt like it was running from the mouse -->
       <div class="box-content">
-        <video class="hvy-video" autoplay muted loop playsinline preload="auto"
-          aria-label="About animation">
+        <video class="hvy-video" autoplay muted loop playsinline preload="auto" 
+          aria-label="Studio animation">
           <source src="assets/media/About_Duotone-Alpha-Anim-Small0001-0250.webm" type="video/webm">
         </video>
       </div>
     </div>
+  </nav>
+  <!-- welcome statement -->
+  <div class="container">
+      <div class="box-content">
+        <video class="intro-text-image" autoplay muted loop playsinline preload="auto" 
+          aria-label="Studio animation">
+          <source src="assets/media/Intro-Text-Video.webm" type="video/webm">
+        </video>
+        <!-- <img src="assets/media/Intro-Text-Image.webp" alt="Welcome to HVY Letters Foundry" class="intro-text-image"> -->
+      </div>
 
-    <!-- box 3 -->
-    <div class="box nav-box">
+  </div>
+  <!-- specimen containt -->
+  <div class="specimen-container">
+    <!-- caltrop -->
+    <div class="box">
       <div class="box-background"></div>
+
+      <!-- Box Corners, coordinates handled by classes-->
       <div class="corner corner-tl"></div>
       <div class="corner corner-tr"></div>
       <div class="corner corner-br"></div>
       <div class="corner corner-bl"></div>
+
+      <!-- Any content goes here -->
+      <!-- I think when content was in the middle it felt like it was running from the mouse -->
       <div class="box-content">
-        <h1>Type</h1>
+        <h1 class="caltrop" contenteditable="false">CALTROP</h1>
+        <div class="Specimen-button-container">
+          <div class="button">Try</div>
+          <div class="button">Download</div>
+        </div>
       </div>
     </div>
-
-    <!-- box 4 -->
-    <div class="box nav-box">
+    <!-- brescia -->
+    <div class="box">
       <div class="box-background"></div>
+
+      <!-- Box Corners, coordinates handled by classes-->
       <div class="corner corner-tl"></div>
       <div class="corner corner-tr"></div>
       <div class="corner corner-br"></div>
       <div class="corner corner-bl"></div>
+
+      <!-- Any content goes here -->
+      <!-- I think when content was in the middle it felt like it was running from the mouse -->
       <div class="box-content">
-        <h1>Contact</h1>
+        <h1 class="brescia" contenteditable="false">BRESCIA</h1>
+        <div class="Specimen-button-container">
+          <div class="button">Try</div>
+          <div class="button">Download</div>
+        </div>
+      </div>
+    </div>
+    <!-- Anthony -->
+    <div class="box">
+      <div class="box-background"></div>
+
+      <!-- Box Corners, coordinates handled by classes-->
+      <div class="corner corner-tl"></div>
+      <div class="corner corner-tr"></div>
+      <div class="corner corner-br"></div>
+      <div class="corner corner-bl"></div>
+
+      <!-- Any content goes here -->
+      <!-- I think when content was in the middle it felt like it was running from the mouse -->
+      <div class="box-content">
+        <h1 class="anthony" contenteditable="false">Anthony</h1>
+        <div class="Specimen-button-container">
+          <div class="button">Try</div>
+          <div class="button">Download</div>
+        </div>
       </div>
     </div>
   </div>
-</nav>
-
   <!-- Mouse movement script -->
   <script>
     window.addEventListener('mousemove', (e) => {
