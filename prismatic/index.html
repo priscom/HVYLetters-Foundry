@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- This is the title that appears in your browser tab -->
+  <title>HVY Letters</title>
+
+  <!-- This is a bunch of meta tags for search engine optimization (SEO) and for when you share your site with other people! -->
+  <!-- Many of these tags were invented by Facebook and are called the Open Graph protocol, more info here: https://ogp.me/ -->
+  <meta name="author" content="TODO: Your name goes here!">
+  <meta name="keywords" content="TODO: A bunch of tags separated by commas!">
+  <meta name="description" content="TODO: A short description of your site!">
+  <meta property="og:url" content="TODO: Your site’s final URL!">
+  <meta name="og:title" property="og:title" content="TODO: The name of your site!">
+  <meta property="og:description" content="TODO: A short description of your site!">
+
+  <!-- This is the thumbnail that appears when you share your site -->
+  <!-- It should be 1200x630 pixels -->
+  <meta property="og:image" content="...assets/meta/opengraph.jpg">
+
+  <!-- This is the favicon that appears in your web browser -->
+  <!-- It should be 32x32 pixels -->
+  <link rel="icon" type="png" href="...assets/meta/favicon.png">
+
+  <!-- All your CSS is in this file -->
+  <link rel="stylesheet" href="...assets/code/home.css">
+
+<style>
+
+body {
+    background-color: #000000;
+    color: #000000;
+    margin: 0;
+    padding: 0;
+    background-image: 
+    linear-gradient(#ffffff 1px, transparent 1px),
+    linear-gradient(90deg, #ffffff 1px, transparent 1px);
+     /* grid size */
+  background-size: 40px 40px;
+  background-position-x: left;
+  background-position-y: top;
+}
+
+@font-face {
+    font-family: 'prismatic';
+    src: url('...assets/fonts/Prismatic-Regular.ttf') format('truetype');
+    font-weight: 400;
+}
+
+.title {
+      font-family: 'prismatic', sans-serif;
+    font-size: 80px;
+    color: #FFFFFF;
+    text-align: left;
+    margin-top: 0px;
+    margin-bottom: 40px;
+    margin-left: 40px;
+    line-height: 1;
+}
+
+.nav-text {
+        font-family: 'prismatic', sans-serif;
+    font-size: 40px;
+    color: #FFFFFF;
+    text-align: left;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    margin-left: 40px;
+    margin-right: 40px;
+    line-height: 1;
+}
+
+.prismatic {
+    font-family: 'prismatic', sans-serif;
+    opacity: 1;
+    font-size: 40px;
+    color: #FFFFFF;
+    text-align: left;
+    margin-top: 36.5px;
+    margin-left: 40px;
+    line-height: 1;
+}
+  
+/* word wrapper: keeps words from breaking mid-word */
+.prismatic .word {
+  display: inline-block;
+  white-space: nowrap;
+}
+
+/* ALL characters (letters + spaces) */
+.prismatic .char {
+  display: inline-block;
+  min-width: 1em;            /* your square cell */
+  opacity: 0;
+  transform: translateY(-10px) scale(.1);
+  transition:
+    transform .4s ease-out,
+    opacity .4s ease-out;
+}
+
+.prismatic .char.revealed {
+  opacity: 1;
+  transform: translateY(0px) scale(1);
+}
+
+.prismatic .char:hover {
+  opacity: 0.25;
+  transform: scale(.1);
+  transition:  transform 0.1s ease-out,
+    opacity 0.1s ease-out;
+}
+
+
+
+
+    .nav {
+      display: flex;
+      flex-direction: row;
+      gap: 0;
+      justify-content: space-between;
+      padding-top: 40px;
+    }
+    .nav-column {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+.type-tester {
+  font-family: 'prismatic', sans-serif;
+  font-size: 80px;
+  color: white;
+  background: black;
+  border: 1px solid white;
+
+  margin: 40px;
+  padding: 40px;
+
+ width: clamp(
+    calc(40px * 6),
+    calc(100vw - 80px),
+    calc(40px * 30)
+  );
+  box-sizing: border-box;
+
+  line-height: 1;
+  outline: none;
+
+  white-space: normal;     /* allow wrapping */
+  overflow-wrap: break-word; /* break long words if needed */
+
+  text-transform: uppercase; /* force uppercase output */
+}
+
+
+  
+  </style>
+
+</head>
+
+<body>
+  <div class="nav">
+<h1 class="title"> HVY </h1>
+<div class="nav-column">
+<p class="nav-text"> STUDIO </p>
+<p class="nav-text"> ABOUT </p>
+  </div>
+</div>
+<h1 class="title"> PRISMATIC </h1>
+<p class="prismatic" id="my-element">
+  <span>PRISMATIC IS A THREE-DIMENSIONAL TYPEFACE BUILT FROM A STRICT MODULAR GRID AND SHAPED THROUGH PRISMATIC RUSTICATION. EVERY FORM IS CONSTRUCTED AS A RELIEF SHARP EDGES ANGLED CUTS AND FACETS DESIGNED TO WORK WITH REAL LIGHT. IT FUNCTIONS AS A SPATIAL WRITING SYSTEML ETTERFORMS THAT EXIST AS OBJECTS FIRST GRAPHICS SECOND. ORIGINALLY INSPIRED BY A FRAGMENT OF STONE LETTERING ON THE RHEIN UNION HALL IN BERLIN PRISMATIC EXPANDS A HANDFUL OF SURVIVING CHARACTERS INTO A COMPLETE SET. THE TYPEFACE ISNT A LITERAL REVIVAL. INSTEAD IT USES THE MATERIAL LOGIC OF CARVED LETTERFORMS DEPTH SHADOW PRESSURE AND STRUCTURE TO BUILD SOMETHING NEW.</span>
+</p>
+<div class="type-tester" contenteditable="true">
+TRY ME
+</div>
+<script>
+  const element = document.getElementById("my-element");
+  const text = element.textContent;
+  element.textContent = "";
+
+  const words = text.split(" ");
+  const allChars = [];
+
+  words.forEach((word, wIndex) => {
+    const wordSpan = document.createElement("span");
+    wordSpan.classList.add("word");
+
+    // letters
+    for (const char of word) {
+      const charSpan = document.createElement("span");
+      charSpan.classList.add("char");
+      charSpan.textContent = char;
+      wordSpan.appendChild(charSpan);
+      allChars.push(charSpan);
+    }
+
+    element.appendChild(wordSpan);
+
+    // space AFTER each word (except last)
+    if (wIndex < words.length - 1) {
+      const spaceSpan = document.createElement("span");
+      spaceSpan.classList.add("char"); 
+      spaceSpan.textContent = "\u00A0"; // non-breaking space
+      element.appendChild(spaceSpan);
+      allChars.push(spaceSpan);
+    }
+  });
+
+  // random reveal for EVERY character (letters + spaces)
+  allChars.forEach((span) => {
+    const delay = Math.random() * 1500; // 0–1500ms
+    setTimeout(() => {
+      span.classList.add("revealed");
+    }, delay);
+  });
+
+  function snapToGrid(value, grid = 40) {
+  return Math.round(value / grid) * grid;
+}
+
+function updateTesterWidth() {
+  const tester = document.querySelector(".type-tester");
+  const maxWidth = window.innerWidth - 80; // 40px margins on each side
+  tester.style.width = snapToGrid(maxWidth) + "px";
+}
+
+window.addEventListener("resize", updateTesterWidth);
+updateTesterWidth();
+</script>
+
+
+</body>
