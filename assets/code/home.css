@@ -64,8 +64,8 @@ body {
   padding: 40px;
 }
 .hvy-video {
-  width: fill;
-  height: fill;
+  width: 120%;
+  height: 120%;
   display: block;
   object-fit: fill;
   pointer-events: none;
@@ -81,7 +81,7 @@ body {
 
   
 }
-
+/* menu styles */
 .menu {
   display: flex;
   gap: 20px;
@@ -90,47 +90,41 @@ body {
   overflow: visible;
 }
 
-/* LEFT: logo column */
-.menu-left {
-  flex: 2;               /* wider or narrower vs right side */
-  height: 100%;
+.menu-row {
+    display: flex;
+    flex: 1;
+    flex-direction: row;
+    height: 100%;
+         transition: flex 0.3s ease;
 }
 
-/* RIGHT: 2×2 grid */
-.menu-right {
-  flex: 3;
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  grid-template-rows: repeat(2, 1fr);
-  gap: 20px;
-  height: 100%;
+.menu-row:hover {
+    flex: 2;
 }
 
-/* make boxes fill their cell cleanly */
-.menu-left .box,
-.menu-right .box {
-  height: 100%;
-  width: 100%;
+.menu-column {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    height: 50%;
+     transition: flex 0.3s ease;
 }
 
-/* Hover resize behaviour on the 4 small boxes */
-.nav-box {
-  transition: transform 0.3s ease, opacity 0.3s ease;
+.menu-column:hover {
+    flex: 2;
 }
 
-/* all boxes shrink a bit when any is hovered */
-.menu-right:hover .nav-box {
-  transform: scale(0.9);
-  opacity: 0.7;
+.menu-item {
+    display: flex;
+    flex-direction: ;
+    flex: 1;
+    height: 100%;
 }
 
-/* the hovered one grows */
-.menu-right .nav-box:hover {
-  transform: scale(1.05);
-  opacity: 1;
-  z-index: 5;  /* float above neighbors */
+.menu-item:hover {
+    display: flex;
+    flex: 2;
 }
-
 
 .container {
         padding-bottom: 20px;
