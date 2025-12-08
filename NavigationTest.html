@@ -26,38 +26,63 @@
   <link rel="icon" type="png" href="...assets/meta/favicon.png">
 
   <!-- All your CSS is in this file -->
-  <!-- <link rel="stylesheet" href="...assets/code/home.css"> -->
+  <!-- <link rel="stylesheet" href="assets/code/home.css"> -->
 
 <style>
+    :root {
+    --gradient-angle: 0deg;
+    --gradient-angle-back: 60deg;
+    --box-border-color: #6547ff;
+    --box-border-gradient: linear-gradient(var(--gradient-angle), #000000 0%, #6547ff 50%, #000000 100%);
+    --box-border-gradient-back: linear-gradient(var(--gradient-angle-back), #000000 0%, #6547ff 50%, #000000 100%);
+    --box-border-width: 2px;
+    --posX: 20px;
+    --posY: 20px;
+    --scaleX: 1;
+    --scaleY: 1;
+    animation: rotateGradient 20s linear infinite;
+}
 
 body {
     background-color: #000000;
     color: #000000;
     margin: 0;
     padding: 0;
-    background-image: 
+    /* background-image: 
     linear-gradient(#ffffff 1px, transparent 1px),
-    linear-gradient(90deg, #ffffff 1px, transparent 1px);
+    linear-gradient(90deg, #ffffff 1px, transparent 1px); */
      /* grid size */
-  background-size: 40px 40px;
+  /* background-size: 40px 40px;
   background-position-x: left;
-  background-position-y: top;
+  background-position-y: top; */
 }
 
+.hvy-video {
+  width: 100%;
+  height: 120%;
+  display: block;
+  object-fit: fill;
+  pointer-events: none;
+
+}
+
+
+  /* TEST NAVIGATION */
 .menu-box {
- background-color: aqua;
- border: 2px white;
+ /* background-color: aqua;
+ border: 2px white; */
     display: flex;
     gap: 40px;
     height: 30vh;
 }
 
 .menu-column {
-    background-color: red;
+    /* background-color: red; */
     display: flex;
     flex: 2;
     flex-direction: column;
     width: 100%;
+    height: 100%;
      transition: flex 0.3s ease;
 }
 
@@ -66,7 +91,7 @@ flex: 4;
 }
 
 .menu-subcolumn {
-        background-color: rgb(255, 0, 208);
+        /* background-color: rgb(255, 0, 208); */
     display: flex;
     flex-direction: column;
     /* width: 100%; */
@@ -81,7 +106,7 @@ flex: 4;
 }
 
 .menu-subitem{
-background-color: rgb(0, 255, 8);
+/* background-color: rgb(0, 255, 8); */
     display: flex;
     flex-direction: column;
     flex: 1;
@@ -93,24 +118,263 @@ background-color: rgb(0, 255, 8);
 .menu-subitem:hover {
     flex: 3;
 }
+
+.menu-box,
+.menu-column,
+.menu-subcolumn,
+.menu-subitem {
+  min-height: 0;
+}
+
+/* BOX STUFF */
+
+.corner {
+    stroke: var(--box-border-color);
+    stroke-width: var(--box-border-width);
+    vector-effect: non-scaling-stroke;
+    position: absolute;
+    overflow: visible;
+}
+
+.corner-tl {
+    top: 0;
+    left: 0;
+    width: 20px;
+    height: 20px;
+    transform: scale(var(--scaleX, 1), var(--scaleY, 1));
+    transform-origin: top left;
+    overflow: visible;
+}
+
+.corner-tr {
+    top: 0;
+    left: 100%;
+    height: 20px;
+    width: 20px;
+    transform: scale(var(--scaleX, 1), var(--scaleY, 1));
+    transform-origin: top left;
+}
+
+.corner-bl {
+    top: 100%;
+    left: 100%;
+    width: 20px;
+    height: 20px;
+    transform: scale(var(--scaleX, 1), var(--scaleY, 1));
+    /* background-color: turquoise; */
+    transform-origin: top left;
+}
+
+.corner-br {
+    top: 100%;
+    left: 0;
+    height: 20px;
+    width: 20px;
+    transform: scale(var(--scaleX, 1), var(--scaleY, 1));
+    transform-origin: top left;
+}
+
+.box-content {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    left: calc(var(--posX)*.5);
+    top: calc(var(--posY)*.5);
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    overflow: visible;
+    pointer-events: auto;
+    white-space: normal;
+    word-break: break-word;
+}
+
+.box {
+    position: relative;
+    align-items: center;
+    /* left: calc(var(--posX)/-1.5);
+        top:  calc(var(--posY)/-1.5); */
+    height: 100%;
+    width: 100%;
+    padding: 20px;
+    border: var(--box-border-width) solid transparent;
+    border-image: var(--box-border-gradient) 1;
+    background: #ffffff00;
+    overflow: visible;
+    pointer-events: none;
+}
+/* .BOX OVERRIDE FOR MENU */
+.menu-box .box {
+  height: 100% !important;      /* let flex parent control the height */
+  width: 100%;       /* this one is OK */
+  padding: 0;        /* or reduce if the padding is blowing things open */
+  pointer-events: auto;  /* so hover/click feels normal in nav */
+}
+
+.box-background {
+    position: absolute;
+    left: var(--posX);
+    top: var(--posY);
+    width: 100%;
+    height: 100%;
+    border: var(--box-border-width) solid transparent;
+    border-image: var(--box-border-gradient-back) 1; 
+    /* https://www.w3schools.com/css/css3_border_images.asp? */
+    z-index: -1;
+    overflow: visible;
+    background-color: #6647ff00;
+    /* box-shadow: #6547ff33 10px 10px 10px 0px; */
+    pointer-events: none;
+    animation: rotateGradient 6s linear infinite;
+}
+
+.corners,
+.box-background {
+    pointer-events: none;
+}
+
+.corners {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    overflow: visible;
+    stroke-linecap: round;
+}
+
+.corner {
+    stroke: var(--box-border-color);
+    stroke-width: var(--box-border-width);
+    position: absolute;
+    /* background-color: var(--border-color); */
+    overflow: visible;
+}
+
+.corner::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    /* barely understand what some of this svg stuff means had to ask the AI */
+background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0%' y1='0%' x2='100%' y2='100%'%3E%3Cstop offset='0%' stop-color='%23000000'/%3E%3Cstop offset='50%' stop-color='%236547ff'/%3E%3Cstop offset='100%' stop-color='%23000000'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cpath d='M0,0 L20,20' stroke='url(%23g)' stroke-width='4' stroke-linecap='round'/%3E%3C/svg%3E");
+
+    background-size: 100% 100%;
+}
   </style>
 
   <div class="menu-box">
     <div class="menu-column">
-test
+ <div class="box">
+<!-- #region corners -->
+      <div class="box-background"></div>
+
+      <div class="corner corner-tl"></div>
+      <div class="corner corner-tr"></div>
+      <div class="corner corner-br"></div>
+      <div class="corner corner-bl"></div>
+<!-- #endregion corners -->
+      <div class="box-content">
+        <video class="hvy-video" autoplay muted loop playsinline preload="auto"
+          aria-label="HVY logo animation">
+          <source src="assets/media/Duotone-Alpha-Anim-Small0001-0250.webm" type="video/webm">
+        </video>
+        </div>
+      </div>
     </div>
        <div class="menu-subcolumn">
-        <div class="menu-subitem"> test </div>
-        <div class="menu-subitem"> test </div>
+        <div class="menu-subitem"> 
+            <div class="box">
+<!-- #region corners -->
+      <div class="box-background"></div>
+
+      <div class="corner corner-tl"></div>
+      <div class="corner corner-tr"></div>
+      <div class="corner corner-br"></div>
+      <div class="corner corner-bl"></div>
+<!-- #endregion corners -->
+      <div class="box-content">
+        <video class="hvy-video" autoplay muted loop playsinline preload="auto"
+          aria-label="HVY logo animation">
+          <source src="assets/media/Duotone-Alpha-Anim-Small0001-0250.webm" type="video/webm">
+        </video>
+        </div>
+      </div> 
+    </div>
+        <div class="menu-subitem"> <div class="box">
+<!-- #region corners -->
+      <div class="box-background"></div>
+
+      <div class="corner corner-tl"></div>
+      <div class="corner corner-tr"></div>
+      <div class="corner corner-br"></div>
+      <div class="corner corner-bl"></div>
+<!-- #endregion corners -->
+      <div class="box-content">
+        <video class="hvy-video" autoplay muted loop playsinline preload="auto"
+          aria-label="HVY logo animation">
+          <source src="assets/media/Duotone-Alpha-Anim-Small0001-0250.webm" type="video/webm">
+        </video>
+        </div>
+      </div> 
+    </div>
     </div>
            <div class="menu-subcolumn">
-        <div class="menu-subitem"> test </div>
-        <div class="menu-subitem"> test </div>
+        <div class="menu-subitem"> <div class="box">
+<!-- #region corners -->
+      <div class="box-background"></div>
+
+      <div class="corner corner-tl"></div>
+      <div class="corner corner-tr"></div>
+      <div class="corner corner-br"></div>
+      <div class="corner corner-bl"></div>
+<!-- #endregion corners -->
+      <div class="box-content">
+        <video class="hvy-video" autoplay muted loop playsinline preload="auto"
+          aria-label="HVY logo animation">
+          <source src="assets/media/Duotone-Alpha-Anim-Small0001-0250.webm" type="video/webm">
+        </video>
+        </div>
+      </div>  </div>
+        <div class="menu-subitem"> <div class="box">
+<!-- #region corners -->
+      <div class="box-background"></div>
+
+      <div class="corner corner-tl"></div>
+      <div class="corner corner-tr"></div>
+      <div class="corner corner-br"></div>
+      <div class="corner corner-bl"></div>
+<!-- #endregion corners -->
+      <div class="box-content">
+        <video class="hvy-video" autoplay muted loop playsinline preload="auto"
+          aria-label="HVY logo animation">
+          <source src="assets/media/Duotone-Alpha-Anim-Small0001-0250.webm" type="video/webm">
+        </video>
+        </div>
+      </div>  </div>
     </div>
 
-<script>
+  <script>
+    window.addEventListener('mousemove', (e) => {
+      const percentX = e.clientX / window.innerWidth; // 0..1
+      const percentY = e.clientY / window.innerHeight; // 0..1
 
-</script>
+      // convert percents to both negative and positive range following Gabriel method
+      const sx = (percentX * 2 - 1).toFixed(3);
+      const sy = (percentY * 2 - 1).toFixed(3);
+
+      // selector looks through all .box elements
+      const boxes = document.querySelectorAll('.box, .container');
+      boxes.forEach(box => {
+        box.style.setProperty('--scaleX', sx);
+        box.style.setProperty('--scaleY', sy);
+        box.style.setProperty('--posX', percentX * 40 - 20 + "px");
+        box.style.setProperty('--posY', percentY * 40 - 20 + "px");
+      });
+    });
+  </script>
 
 
 </body>
