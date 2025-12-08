@@ -21,12 +21,26 @@
     --box-border-color: #6547ff;
     --box-border-gradient: linear-gradient(var(--gradient-angle), #000000 0%, #6547ff 50%, #000000 100%);
     --box-border-gradient-back: linear-gradient(var(--gradient-angle-back), #000000 0%, #6547ff 50%, #000000 100%);
+    --specimen-button-gradient: linear-gradient(90deg, #000000 0%, #6547ff 100%);
     --box-border-width: 2px;
     --posX: 20px;
     --posY: 20px;
     --scaleX: 1;
     --scaleY: 1;
     animation: rotateGradient 20s linear infinite;
+}
+
+@property --grow {
+  syntax: "<number>";
+  inherits: true;
+  initial-value: 1;
+}
+
+    /* -------------------- FONTS -------------------- */
+
+@font-face {
+    font-family: 'caltrop';
+    src: url('../fonts/Caltrop-VariableVF.ttf') format('truetype-variations');
 }
 
     /* -------------------- BODY -------------------- */
@@ -177,7 +191,8 @@ flex: 4;
     align-items: center;
     /* left: calc(var(--posX)/-1.5);
         top:  calc(var(--posY)/-1.5); */
-    height: 100%;
+        min-height: 100%; 
+    height: auto;   
     width: 100%;
     padding: 20px;
     border: var(--box-border-width) solid transparent;
@@ -192,7 +207,8 @@ flex: 4;
     left: var(--posX);
     top: var(--posY);
     width: 100%;
-    height: 100%;
+        min-height: 100%; 
+    height: auto;  
     border: var(--box-border-width) solid transparent;
     border-image: var(--box-border-gradient-back) 1; 
     /* https://www.w3schools.com/css/css3_border_images.asp? */
@@ -252,7 +268,8 @@ background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/s
     display: flex;
     flex-direction: column;
     gap: 40px;
-    height: 80vh;
+    min-height: 100vh;  /* base height */
+    height: auto;       /* allow growth if content needs more */
     padding: 40px;
 }
 
@@ -260,59 +277,136 @@ background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/s
     background-color: rgb(0, 255, 21);
     display: flex;
     gap: 40px;
+    --grow: 1;
     flex: 1;
     flex-direction: row;
     width: 100%;
     height: 100%;
-     transition: flex 0.3s ease;
+transition: flex 0.3s ease, --grow 0.3s ease;
 }
 
 .specimen-row {
     background-color: red;
     display: flex;
     flex: 4;
+    --grow: 1;
     gap: 40px;
     flex-direction: row;
-    width: 100%;
-    height: 100%;
-     transition: flex 0.3s ease;
+    min-width: 100%;
+    width: auto;
+    min-height: 100%; 
+    height: auto;   
+   transition: flex 0.3s ease, --grow 0.3s ease;
+          
 }
 
 .specimen-column {
     background-color: rgb(47, 0, 255);
     display: flex;
     flex: 1;
+    --grow: 1;
     flex-direction: row;
     width: 100%;
-    height: 100%;
-     transition: flex 0.3s ease;
+    min-height: 100%; 
+    height: auto;      
+     transition: flex 0.3s ease, --grow 0.3s ease;
 }
 
 .specimen-button {
-    background-color: rgb(255, 0, 230);
+    /* background-color: rgb(255, 0, 230); */
+    background-image: var(--specimen-button-gradient);
     display: flex;
     flex: 1;
     flex-direction: row;
+    justify-content: flex-end;
     width: 100%;
-    height: 100%;
+        min-height: 100%; 
+    height: auto;  
+    border-radius: 9999px;
+    align-items: center;
      transition: flex 0.3s ease;
 }
 
 .specimen-headfoot:hover {
     flex: 2;
+    --grow: 2;
 }
 
 .specimen-row:hover {
     flex: 8;
+      --grow: 1.5;
 }
 
 .specimen-column:hover {
     flex: 2;
+    --grow: 2;
 }
 
 .specimen-button:hover {
     flex: 2;
 }
+
+/* .specimen-box,
+.specimen-headfoot,
+.specimen-row,
+.specimen-column,
+.specimen-button {
+  min-height: 0;
+} */
+
+    /* -------------------- SPECIMEN TEXT STYLES -------------------- */
+
+    .specimen-text {
+  --base-size: 3vw;
+
+  font-family: system-ui, sans-serif;
+  font-size: calc(var(--base-size) * var(--grow));
+  line-height: 1.2;
+
+  display: block;
+  width: 100%;
+  color: #ffffff;
+
+  /* overflow: hidden; */
+  word-break: break-word;
+  text-wrap: balance;
+    }
+
+        .specimen-text-caltrop-header {
+    font-family: "caltrop";
+    font-variation-settings: "POKE" 50, "SHAR" 50, "SPIN" 0, "wdth" 0;
+    font-weight: 400;
+  --base-size: 5vw;
+}
+
+    .specimen-text-caltrop-xl {
+    font-family: "caltrop";
+    font-variation-settings: "POKE" 50, "SHAR" 50, "SPIN" 0, "wdth" 0;
+    font-weight: 400;
+  --base-size: 10vw;
+}
+
+    .specimen-text-caltrop-l {
+    font-family: "caltrop";
+    font-variation-settings: "POKE" 50, "SHAR" 50, "SPIN" 0, "wdth" 0;
+    font-weight: 400;
+  --base-size: 3vw;
+}
+
+    .specimen-text-caltrop-m {
+    font-family: "caltrop";
+    font-variation-settings: "POKE" 50, "SHAR" 50, "SPIN" 0, "wdth" 0;
+    font-weight: 400;
+  --base-size: 1.5vw;
+    }
+
+        .specimen-text-button {
+  text-align: right;
+  font-weight: 400;
+  line-height: 2;
+  --base-size: 1.5vw;
+  padding-right: 40px;
+        }
 
     /* -------------------- VIDEO STYLES -------------------- */
 
