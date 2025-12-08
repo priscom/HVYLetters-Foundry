@@ -1,3 +1,5 @@
+    /* -------------------- BASIC SETUP BEHAVIOR -------------------- */
+
 * {
     /* Fixing the box-sizing issue */
     /* Explanation: https://www.w3schools.com/css/css3_box-sizing.asp */
@@ -11,20 +13,9 @@
     scroll-behavior: smooth;
 }
 
-/* had to use AI to figure out how to get smmoth animation for this property */
-/* but I looked up w3 school to try and figure out why this works https://www.w3schools.com/css/css3_property.asp unfortunately I still don't know */
-@property --gradient-angle {
-  syntax: "<angle>";
-  inherits: false;
-  initial-value: 0deg;
-}
-@property --gradient-angle-back {
-  syntax: "<angle>";
-  inherits: false;
-  initial-value: 60deg;
-}
+    /* -------------------- ROOT SET UP (VARIABLES ETC.) -------------------- */
 
-:root {
+        :root {
     --gradient-angle: 0deg;
     --gradient-angle-back: 60deg;
     --box-border-color: #6547ff;
@@ -38,234 +29,147 @@
     animation: rotateGradient 20s linear infinite;
 }
 
-@keyframes rotateGradient {
-  to {
-    --gradient-angle: 360deg;
-    --gradient-angle-back: 420deg;
-  }
+    /* -------------------- BODY -------------------- */
+
+    body {
+    background-color: #000000;
+    color: #000000;
+    margin: 0;
+    padding: 0;
+    /* background-image: 
+    linear-gradient(#ffffff 1px, transparent 1px),
+    linear-gradient(90deg, #ffffff 1px, transparent 1px); */
+     /* grid size */
+  /* background-size: 40px 40px;
+  background-position-x: left;
+  background-position-y: top; */
 }
 
-@font-face {
-    font-family: 'ronzino';
-    src: url('../fonts/Ronzino-Regular.woff2') format('woff2');
-    font-weight: 400;
-}
+    /* -------------------- MENU STYLES -------------------- */
 
-@font-face {
-    font-family: 'ronzino';
-    src: url('../fonts/Ronzino-Bold.woff2') format('woff2');
-    font-weight: 700;
-}
-
-body {
-    background: #000000;
-    overflow: visible;
-    gap: 20px;
-  padding: 40px;
-}
-.hvy-video {
-  width: 120%;
-  height: 120%;
-  display: block;
-  object-fit: fill;
-  pointer-events: none;
-
-}
-.intro-text-image {
-  display: block;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  object-fit: fill;
-  pointer-events: none;
-
-  
-}
-/* menu styles */
-.menu {
-  display: flex;
-  gap: 20px;
-  height: 30vh;          /* tweak to taste */
-  padding-bottom: 20px;
-  overflow: visible;
-}
-
-.menu-row {
+    .menu-box {
+ /* background-color: aqua;
+ border: 2px white; */
     display: flex;
-    flex: 1;
-    flex-direction: row;
-    height: 100%;
-         transition: flex 0.3s ease;
-}
-
-.menu-row:hover {
-    flex: 2;
+    gap: 40px;
+    height: 30vh;
+    padding: 40px;
 }
 
 .menu-column {
+    /* background-color: red; */
     display: flex;
+    flex: 2;
     flex-direction: column;
-    flex: 1;
-    height: 50%;
+    width: 100%;
+    height: 100%;
      transition: flex 0.3s ease;
 }
 
 .menu-column:hover {
-    flex: 2;
+flex: 4;
 }
 
-.menu-item {
+.menu-subcolumn {
+        /* background-color: rgb(255, 0, 208); */
     display: flex;
-    flex-direction: ;
+    flex-direction: column;
+    /* width: 100%; */
     flex: 1;
-    height: 100%;
+    /* padding: 10px; */
+    gap: 40px;
+     transition: flex 0.3s ease;
 }
 
-.menu-item:hover {
-    display: flex;
+.menu-subcolumn:hover {
     flex: 2;
 }
 
-.container {
-        padding-bottom: 20px;
-    padding-bottom: 20px;
+.menu-subitem{
+/* background-color: rgb(0, 255, 8); */
     display: flex;
     flex-direction: column;
-    align-items: center;
-    gap: 20px;
+    flex: 1;
+    /* width: 100%; */
+    /* margin: 10px; */
+     transition: flex 0.3s ease;
+}
+
+.menu-subitem:hover {
+    flex: 3;
+}
+
+.menu-box,
+.menu-column,
+.menu-subcolumn,
+.menu-subitem {
+  min-height: 0;
+}
+
+    /* -------------------- BOX STYLES -------------------- */
+
+    .corner {
+    stroke: var(--box-border-color);
+    stroke-width: var(--box-border-width);
+    vector-effect: non-scaling-stroke;
+    position: absolute;
     overflow: visible;
-    height: auto;
+}
+
+.corner-tl {
+    top: 0;
+    left: 0;
+    width: 20px;
+    height: 20px;
+    transform: scale(var(--scaleX, 1), var(--scaleY, 1));
+    transform-origin: top left;
+    overflow: visible;
+}
+
+.corner-tr {
+    top: 0;
+    left: 100%;
+    height: 20px;
+    width: 20px;
+    transform: scale(var(--scaleX, 1), var(--scaleY, 1));
+    transform-origin: top left;
+}
+
+.corner-bl {
+    top: 100%;
+    left: 100%;
+    width: 20px;
+    height: 20px;
+    transform: scale(var(--scaleX, 1), var(--scaleY, 1));
+    /* background-color: turquoise; */
+    transform-origin: top left;
+}
+
+.corner-br {
+    top: 100%;
+    left: 0;
+    height: 20px;
+    width: 20px;
+    transform: scale(var(--scaleX, 1), var(--scaleY, 1));
+    transform-origin: top left;
+}
+
+.box-content {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    left: calc(var(--posX)*.5);
+    top: calc(var(--posY)*.5);
     width: 100%;
-}
-
-.specimen-container {
-    padding-bottom: 20px;
-    padding-bottom: 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 20px;
+    height: 100%;
+    z-index: 2;
     overflow: visible;
-
-}
-
-@font-face {
-    font-family: 'caltrop';
-    src: url('../fonts/Caltrop-VariableVF.ttf') format('truetype-variations');
-}
-
-.caltrop {
-    font-family: "caltrop";
-    font-variation-settings: "POKE" 50, "SHAR" 50, "SPIN" 0, "wdth" 0;
-    font-size: clamp(2rem, 10vw, 20rem);
-    font-weight: 400;
-    color: #6547ff;
-    transition: all 3s ease-in-out;
-}
-
-.caltrop:hover {
-    cursor: pointer;
-    animation-name: caltrop-animation;
-    animation-duration: 3s;
-    animation-iteration-count: infinite;
-    animation-timing-function: linear;
-}
-
-@keyframes caltrop-animation {
-
-    0%,
-    100% {
-        font-variation-settings: "POKE" 50, "SHAR" 50, "SPIN" 0, "wdth" 0;
-        color: #6547ff;
-    }
-
-    25% {
-        font-variation-settings: "POKE" 100, "SHAR" 100, "SPIN" 100, "wdth" 0;
-        color: #ff7490;
-    }
-
-    50% {
-        font-variation-settings: "POKE" 0, "SHAR" 0, "SPIN" 0, "wdth" 100;
-        color: #ff7490;
-    }
-
-    75% {
-        font-variation-settings: "POKE" 50, "SHAR" 50, "SPIN" 0, "wdth" 0;
-        color: #ff7490;
-    }
-}
-
-@font-face {
-    font-family: 'brescia';
-    src: url('../fonts/Brescia-PictoRippleVF.ttf') format('truetype-variations');
-}
-
-.brescia {
-    font-family: "brescia";
-    font-variation-settings: "RIPP" 0;
-    font-size: clamp(2rem, 10vw, 20rem);
-    font-weight: 400;
-    color: #6547ff;
-    transition: all 3s ease-in-out;
-}
-
-.brescia:hover {
-    animation-name: brescia-animation;
-    animation-duration: 3s;
-    animation-iteration-count: infinite;
-    animation-timing-function: linear;
-    cursor: pointer;
-    transition: all 3s ease-in-out;
-}
-
-@keyframes brescia-animation {
-
-    0%,
-    100% {
-        font-variation-settings: "RIPP" 0;
-        color: #6547ff;
-    }
-
-    50% {
-        font-variation-settings: "RIPP" 100;
-        color: #ff7490;
-    }
-}
-
-@font-face {
-    font-family: 'anthony';
-    src: url('../fonts/AnthonyRemixVF.ttf') format('truetype-variations');
-}
-
-.anthony {
-    font-family: "anthony";
-    font-variation-settings: "REMI" 0;
-    font-size: clamp(2rem, 10vw, 20rem);
-    font-weight: 400;
-    color: #6547ff;
-}
-
-.anthony:hover {
-    animation-name: anthony-animation;
-    animation-duration: 3s;
-    animation-iteration-count: infinite;
-    animation-timing-function: linear;
-    cursor: pointer;
-    transition: all 3s ease-in-out;
-}
-
-@keyframes anthony-animation {
-
-    0%,
-    100% {
-        font-variation-settings: "REMI" 0;
-        color: #6547ff;
-    }
-
-    50% {
-        font-variation-settings: "REMI" 100;
-        color: #ff7490;
-    }
+    pointer-events: auto;
+    white-space: normal;
+    word-break: break-word;
 }
 
 .box {
@@ -333,122 +237,90 @@ background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/s
     background-size: 100% 100%;
 }
 
-/* .corners {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-    overflow: visible;
-} */
-
-.corner {
-    stroke: var(--box-border-color);
-    stroke-width: var(--box-border-width);
-    vector-effect: non-scaling-stroke;
-    position: absolute;
-    overflow: visible;
+    /* -------------------- BOX OVERIDE FOR MENU (TO MAKE FLEX WORK) -------------------- */
+.menu-box .box {
+  height: 100% !important;      /* let flex parent control the height */
+  width: 100%;       /* this one is OK */
+  padding: 0;        /* or reduce if the padding is blowing things open */
+  pointer-events: auto;  /* so hover/click feels normal in nav */
 }
 
-.corner-tl {
-    top: 0;
-    left: 0;
-    width: 20px;
-    height: 20px;
-    transform: scale(var(--scaleX, 1), var(--scaleY, 1));
-    transform-origin: top left;
-    overflow: visible;
-}
+    /* -------------------- SPECIMEN STYLES -------------------- */
 
-.corner-tr {
-    top: 0;
-    left: 100%;
-    height: 20px;
-    width: 20px;
-    transform: scale(var(--scaleX, 1), var(--scaleY, 1));
-    transform-origin: top left;
-}
-
-.corner-bl {
-    top: 100%;
-    left: 100%;
-    width: 20px;
-    height: 20px;
-    transform: scale(var(--scaleX, 1), var(--scaleY, 1));
-    /* background-color: turquoise; */
-    transform-origin: top left;
-}
-
-.corner-br {
-    top: 100%;
-    left: 0;
-    height: 20px;
-    width: 20px;
-    transform: scale(var(--scaleX, 1), var(--scaleY, 1));
-    transform-origin: top left;
-}
-
-.box-content {
-    position: relative;
+.specimen-box {
+    background-color: aqua;
     display: flex;
     flex-direction: column;
-    text-align: center;
-    justify-content: center;
-    align-items: center;
-    left: calc(var(--posX)*.5);
-    top: calc(var(--posY)*.5);
+    gap: 40px;
+    height: 80vh;
+    padding: 40px;
+}
+
+.specimen-headfoot {
+    background-color: rgb(0, 255, 21);
+    display: flex;
+    gap: 40px;
+    flex: 1;
+    flex-direction: row;
     width: 100%;
     height: 100%;
-    z-index: 2;
-    overflow: visible;
-    pointer-events: auto;
-    white-space: normal;
-    word-break: break-word;
+     transition: flex 0.3s ease;
 }
-.Specimen-button-container {
-    position: relative;
-    top: center;
+
+.specimen-row {
+    background-color: red;
     display: flex;
+    flex: 4;
+    gap: 40px;
     flex-direction: row;
-    gap: 10px;
-    align-items: center;
-    justify-content: center;
-    /* left: 85%; */
     width: 100%;
-}
-.button {
-    font-family: 'ronzino';
-    font-weight: 700;
-    font-size: 1vw;
-    color: var(--box-border-color);
-    /* background: var(--box-border-color); */
-    border: var(--box-border-width) solid var(--box-border-color);
-    padding: 10px 20px;
-    cursor: pointer;
-    transition: background-color 0.3s, color 0.3s;
-    border-radius: 9999px;
-       transition: ease-in-out;
-    transition-duration: .5s;
-}
-.button:hover {
-    background: #ff7490;;
-    border-color: #ff7490;;
-    color: #000000;
-    transition: ease-in-out;
-    transition-duration: .5s;
+    height: 100%;
+     transition: flex 0.3s ease;
 }
 
-/* General styles for the whole page */
-h1 {
-    font-family: 'ronzino';
-    font-weight: 700;
-    font-size: 3vw;
-    color: var(--box-border-color);
+.specimen-column {
+    background-color: rgb(47, 0, 255);
+    display: flex;
+    flex: 1;
+    flex-direction: row;
+    width: 100%;
+    height: 100%;
+     transition: flex 0.3s ease;
 }
 
-h2 {
-    font-family: 'ronzino';
-    font-weight: 400;
-    font-size: 2vw;
-    color: var(--box-border-color);
+.specimen-button {
+    background-color: rgb(255, 0, 230);
+    display: flex;
+    flex: 1;
+    flex-direction: row;
+    width: 100%;
+    height: 100%;
+     transition: flex 0.3s ease;
+}
+
+.specimen-headfoot:hover {
+    flex: 2;
+}
+
+.specimen-row:hover {
+    flex: 8;
+}
+
+.specimen-column:hover {
+    flex: 2;
+}
+
+.specimen-button:hover {
+    flex: 2;
+}
+
+    /* -------------------- VIDEO STYLES -------------------- */
+
+.hvy-video {
+  width: 100%;
+  height: 120%;
+  display: block;
+  object-fit: fill;
+  pointer-events: none;
+
 }

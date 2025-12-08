@@ -1,0 +1,454 @@
+* {
+    /* Fixing the box-sizing issue */
+    /* Explanation: https://www.w3schools.com/css/css3_box-sizing.asp */
+    box-sizing: border-box;
+
+    /* Setting all default margin and padding to 0, because elements have pretty arbitary initial settings */
+    margin: 0;
+    padding: 0;
+
+    /* Smooth scrolliing when anchor links pressed */
+    scroll-behavior: smooth;
+}
+
+/* had to use AI to figure out how to get smmoth animation for this property */
+/* but I looked up w3 school to try and figure out why this works https://www.w3schools.com/css/css3_property.asp unfortunately I still don't know */
+@property --gradient-angle {
+  syntax: "<angle>";
+  inherits: false;
+  initial-value: 0deg;
+}
+@property --gradient-angle-back {
+  syntax: "<angle>";
+  inherits: false;
+  initial-value: 60deg;
+}
+
+:root {
+    --gradient-angle: 0deg;
+    --gradient-angle-back: 60deg;
+    --box-border-color: #6547ff;
+    --box-border-gradient: linear-gradient(var(--gradient-angle), #000000 0%, #6547ff 50%, #000000 100%);
+    --box-border-gradient-back: linear-gradient(var(--gradient-angle-back), #000000 0%, #6547ff 50%, #000000 100%);
+    --box-border-width: 2px;
+    --posX: 20px;
+    --posY: 20px;
+    --scaleX: 1;
+    --scaleY: 1;
+    animation: rotateGradient 20s linear infinite;
+}
+
+@keyframes rotateGradient {
+  to {
+    --gradient-angle: 360deg;
+    --gradient-angle-back: 420deg;
+  }
+}
+
+@font-face {
+    font-family: 'ronzino';
+    src: url('../fonts/Ronzino-Regular.woff2') format('woff2');
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: 'ronzino';
+    src: url('../fonts/Ronzino-Bold.woff2') format('woff2');
+    font-weight: 700;
+}
+
+body {
+    background: #000000;
+    overflow: visible;
+    gap: 20px;
+  padding: 40px;
+}
+.hvy-video {
+  width: 120%;
+  height: 120%;
+  display: block;
+  object-fit: fill;
+  pointer-events: none;
+
+}
+.intro-text-image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  object-fit: fill;
+  pointer-events: none;
+
+  
+}
+/* menu styles */
+.menu {
+  display: flex;
+  gap: 20px;
+  height: 30vh;          /* tweak to taste */
+  padding-bottom: 20px;
+  overflow: visible;
+}
+
+.menu-row {
+    display: flex;
+    flex: 1;
+    flex-direction: row;
+    height: 100%;
+         transition: flex 0.3s ease;
+}
+
+.menu-row:hover {
+    flex: 2;
+}
+
+.menu-column {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    height: 50%;
+     transition: flex 0.3s ease;
+}
+
+.menu-column:hover {
+    flex: 2;
+}
+
+.menu-item {
+    display: flex;
+    flex-direction: ;
+    flex: 1;
+    height: 100%;
+}
+
+.menu-item:hover {
+    display: flex;
+    flex: 2;
+}
+
+.container {
+        padding-bottom: 20px;
+    padding-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    overflow: visible;
+    height: auto;
+    width: 100%;
+}
+
+.specimen-container {
+    padding-bottom: 20px;
+    padding-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    overflow: visible;
+
+}
+
+@font-face {
+    font-family: 'caltrop';
+    src: url('../fonts/Caltrop-VariableVF.ttf') format('truetype-variations');
+}
+
+.caltrop {
+    font-family: "caltrop";
+    font-variation-settings: "POKE" 50, "SHAR" 50, "SPIN" 0, "wdth" 0;
+    font-size: clamp(2rem, 10vw, 20rem);
+    font-weight: 400;
+    color: #6547ff;
+    transition: all 3s ease-in-out;
+}
+
+.caltrop:hover {
+    cursor: pointer;
+    animation-name: caltrop-animation;
+    animation-duration: 3s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+}
+
+@keyframes caltrop-animation {
+
+    0%,
+    100% {
+        font-variation-settings: "POKE" 50, "SHAR" 50, "SPIN" 0, "wdth" 0;
+        color: #6547ff;
+    }
+
+    25% {
+        font-variation-settings: "POKE" 100, "SHAR" 100, "SPIN" 100, "wdth" 0;
+        color: #ff7490;
+    }
+
+    50% {
+        font-variation-settings: "POKE" 0, "SHAR" 0, "SPIN" 0, "wdth" 100;
+        color: #ff7490;
+    }
+
+    75% {
+        font-variation-settings: "POKE" 50, "SHAR" 50, "SPIN" 0, "wdth" 0;
+        color: #ff7490;
+    }
+}
+
+@font-face {
+    font-family: 'brescia';
+    src: url('../fonts/Brescia-PictoRippleVF.ttf') format('truetype-variations');
+}
+
+.brescia {
+    font-family: "brescia";
+    font-variation-settings: "RIPP" 0;
+    font-size: clamp(2rem, 10vw, 20rem);
+    font-weight: 400;
+    color: #6547ff;
+    transition: all 3s ease-in-out;
+}
+
+.brescia:hover {
+    animation-name: brescia-animation;
+    animation-duration: 3s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+    cursor: pointer;
+    transition: all 3s ease-in-out;
+}
+
+@keyframes brescia-animation {
+
+    0%,
+    100% {
+        font-variation-settings: "RIPP" 0;
+        color: #6547ff;
+    }
+
+    50% {
+        font-variation-settings: "RIPP" 100;
+        color: #ff7490;
+    }
+}
+
+@font-face {
+    font-family: 'anthony';
+    src: url('../fonts/AnthonyRemixVF.ttf') format('truetype-variations');
+}
+
+.anthony {
+    font-family: "anthony";
+    font-variation-settings: "REMI" 0;
+    font-size: clamp(2rem, 10vw, 20rem);
+    font-weight: 400;
+    color: #6547ff;
+}
+
+.anthony:hover {
+    animation-name: anthony-animation;
+    animation-duration: 3s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+    cursor: pointer;
+    transition: all 3s ease-in-out;
+}
+
+@keyframes anthony-animation {
+
+    0%,
+    100% {
+        font-variation-settings: "REMI" 0;
+        color: #6547ff;
+    }
+
+    50% {
+        font-variation-settings: "REMI" 100;
+        color: #ff7490;
+    }
+}
+
+.box {
+    position: relative;
+    align-items: center;
+    /* left: calc(var(--posX)/-1.5);
+        top:  calc(var(--posY)/-1.5); */
+    height: 100%;
+    width: 100%;
+    padding: 20px;
+    border: var(--box-border-width) solid transparent;
+    border-image: var(--box-border-gradient) 1;
+    background: #ffffff00;
+    overflow: visible;
+    pointer-events: none;
+}
+
+.box-background {
+    position: absolute;
+    left: var(--posX);
+    top: var(--posY);
+    width: 100%;
+    height: 100%;
+    border: var(--box-border-width) solid transparent;
+    border-image: var(--box-border-gradient-back) 1; 
+    /* https://www.w3schools.com/css/css3_border_images.asp? */
+    z-index: -1;
+    overflow: visible;
+    background-color: #6647ff00;
+    /* box-shadow: #6547ff33 10px 10px 10px 0px; */
+    pointer-events: none;
+    animation: rotateGradient 6s linear infinite;
+}
+
+.corners,
+.box-background {
+    pointer-events: none;
+}
+
+.corners {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    overflow: visible;
+    stroke-linecap: round;
+}
+
+.corner {
+    stroke: var(--box-border-color);
+    stroke-width: var(--box-border-width);
+    position: absolute;
+    /* background-color: var(--border-color); */
+    overflow: visible;
+}
+
+.corner::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    /* barely understand what some of this svg stuff means had to ask the AI */
+background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0%' y1='0%' x2='100%' y2='100%'%3E%3Cstop offset='0%' stop-color='%23000000'/%3E%3Cstop offset='50%' stop-color='%236547ff'/%3E%3Cstop offset='100%' stop-color='%23000000'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cpath d='M0,0 L20,20' stroke='url(%23g)' stroke-width='4' stroke-linecap='round'/%3E%3C/svg%3E");
+
+    background-size: 100% 100%;
+}
+
+/* .corners {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    overflow: visible;
+} */
+
+.corner {
+    stroke: var(--box-border-color);
+    stroke-width: var(--box-border-width);
+    vector-effect: non-scaling-stroke;
+    position: absolute;
+    overflow: visible;
+}
+
+.corner-tl {
+    top: 0;
+    left: 0;
+    width: 20px;
+    height: 20px;
+    transform: scale(var(--scaleX, 1), var(--scaleY, 1));
+    transform-origin: top left;
+    overflow: visible;
+}
+
+.corner-tr {
+    top: 0;
+    left: 100%;
+    height: 20px;
+    width: 20px;
+    transform: scale(var(--scaleX, 1), var(--scaleY, 1));
+    transform-origin: top left;
+}
+
+.corner-bl {
+    top: 100%;
+    left: 100%;
+    width: 20px;
+    height: 20px;
+    transform: scale(var(--scaleX, 1), var(--scaleY, 1));
+    /* background-color: turquoise; */
+    transform-origin: top left;
+}
+
+.corner-br {
+    top: 100%;
+    left: 0;
+    height: 20px;
+    width: 20px;
+    transform: scale(var(--scaleX, 1), var(--scaleY, 1));
+    transform-origin: top left;
+}
+
+.box-content {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    left: calc(var(--posX)*.5);
+    top: calc(var(--posY)*.5);
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    overflow: visible;
+    pointer-events: auto;
+    white-space: normal;
+    word-break: break-word;
+}
+.Specimen-button-container {
+    position: relative;
+    top: center;
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
+    /* left: 85%; */
+    width: 100%;
+}
+.button {
+    font-family: 'ronzino';
+    font-weight: 700;
+    font-size: 1vw;
+    color: var(--box-border-color);
+    /* background: var(--box-border-color); */
+    border: var(--box-border-width) solid var(--box-border-color);
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+    border-radius: 9999px;
+       transition: ease-in-out;
+    transition-duration: .5s;
+}
+.button:hover {
+    background: #ff7490;;
+    border-color: #ff7490;;
+    color: #000000;
+    transition: ease-in-out;
+    transition-duration: .5s;
+}
+
+/* General styles for the whole page */
+h1 {
+    font-family: 'ronzino';
+    font-weight: 700;
+    font-size: 3vw;
+    color: var(--box-border-color);
+}
+
+h2 {
+    font-family: 'ronzino';
+    font-weight: 400;
+    font-size: 2vw;
+    color: var(--box-border-color);
+}
