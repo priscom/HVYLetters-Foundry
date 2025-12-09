@@ -30,6 +30,8 @@
     animation: rotateGradient 20s linear infinite;
 }
 
+    /* -------------------- PROPERTIES FOR ANIMATION -------------------- */
+
 @property --grow {
   syntax: "<number>";
   inherits: true;
@@ -41,6 +43,17 @@
 @font-face {
     font-family: 'caltrop';
     src: url('../fonts/Caltrop-VariableVF.ttf') format('truetype-variations');
+}
+
+@font-face {
+    font-family: 'brescia';
+    src: url('../fonts/Brescia-PictoRippleVF.ttf') format('truetype-variations');
+}
+
+@font-face {
+    font-family: 'prismatic';
+    src: url('...assets/fonts/Prismatic-Regular.ttf') format('truetype');
+    font-weight: 400;
 }
 
     /* -------------------- BODY -------------------- */
@@ -264,7 +277,7 @@ background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/s
     /* -------------------- SPECIMEN STYLES -------------------- */
 
 .specimen-box {
-    background-color: aqua;
+    /* background-color: aqua; */
     display: flex;
     flex-direction: column;
     gap: 40px;
@@ -274,7 +287,7 @@ background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/s
 }
 
 .specimen-headfoot {
-    background-color: rgb(0, 255, 21);
+    /* background-color: rgb(0, 255, 21); */
     display: flex;
     gap: 40px;
     --grow: 1;
@@ -286,7 +299,7 @@ transition: flex 0.3s ease, --grow 0.3s ease;
 }
 
 .specimen-row {
-    background-color: red;
+    /* background-color: red; */
     display: flex;
     flex: 4;
     --grow: 1;
@@ -301,7 +314,7 @@ transition: flex 0.3s ease, --grow 0.3s ease;
 }
 
 .specimen-column {
-    background-color: rgb(47, 0, 255);
+    /* background-color: rgb(47, 0, 255); */
     display: flex;
     flex: 1;
     --grow: 1;
@@ -355,6 +368,7 @@ transition: flex 0.3s ease, --grow 0.3s ease;
 } */
 
     /* -------------------- SPECIMEN TEXT STYLES -------------------- */
+    /* (PRISMTIC GETS SPECIAL CONTAINER) */
 
     .specimen-text {
   --base-size: 3vw;
@@ -372,6 +386,20 @@ transition: flex 0.3s ease, --grow 0.3s ease;
   text-wrap: balance;
     }
 
+            .specimen-text-button {
+  display: flex;
+  align-items: center;       
+  justify-content: flex-end; 
+  text-align: right;
+  font-weight: 400;
+  --base-size: 1.5vw;
+  line-height: 1;
+  padding: 0 40px 0 0;
+        }
+
+    /* -------------------- FONT SPECIFIC SPECIMEN TEXT STYLES -------------------- */
+        /* -------------------- CALTROP -------------------- */
+
         .specimen-text-caltrop-header {
     font-family: "caltrop";
     font-variation-settings: "POKE" 50, "SHAR" 50, "SPIN" 0, "wdth" 0;
@@ -384,6 +412,11 @@ transition: flex 0.3s ease, --grow 0.3s ease;
     font-variation-settings: "POKE" 50, "SHAR" 50, "SPIN" 0, "wdth" 0;
     font-weight: 400;
   --base-size: 10vw;
+  /* ANIMATION */
+    animation-name: caltrop-animation;
+    animation-duration: 5s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
 }
 
     .specimen-text-caltrop-l {
@@ -400,13 +433,115 @@ transition: flex 0.3s ease, --grow 0.3s ease;
   --base-size: 1.5vw;
     }
 
-        .specimen-text-button {
-  text-align: right;
-  font-weight: 400;
-  line-height: 2;
+            /* -------------------- CALTROP ANIMATION-------------------- */
+
+    @keyframes caltrop-animation {
+
+    0%,
+    100% {
+        font-variation-settings: "POKE" 50, "SHAR" 50, "SPIN" 0, "wdth" 0;
+        color: #6547ff;
+    }
+
+    25% {
+        font-variation-settings: "POKE" 100, "SHAR" 100, "SPIN" 100, "wdth" 0;
+        color: #ff7490;
+    }
+
+    50% {
+        font-variation-settings: "POKE" 0, "SHAR" 0, "SPIN" 0, "wdth" 100;
+        color: #ff7490;
+    }
+
+    75% {
+        font-variation-settings: "POKE" 50, "SHAR" 50, "SPIN" 0, "wdth" 0;
+        color: #ff7490;
+    }
+}
+
+        /* -------------------- PRISMATIC -------------------- */
+
+        
+    .specimen-text-prismatic-header {
+    font-family: "prismatic";
+    font-weight: 400;
+    text-transform: uppercase;
+  --base-size: 5vw;
+}
+
+    .specimen-text-prismatic-xl {
+    font-family: "prismatic";
+    font-weight: 400;
+    text-transform: uppercase;
+  --base-size: 10vw;
+}
+
+    .specimen-text-prismatic-l {
+    font-family: "prismatic";
+    font-weight: 400;
+    text-transform: uppercase;
+  --base-size: 3vw;
+}
+
+    .specimen-text-prismatic-m {
+    font-family: "prismatic";
+    font-weight: 400;
+    text-transform: uppercase;
   --base-size: 1.5vw;
-  padding-right: 40px;
-        }
+    }
+
+        /* -------------------- BRESCIA -------------------- */
+
+        .specimen-text-brescia-header {
+    font-family: "brescia";
+    font-variation-settings: "RIPP" 0;
+    font-weight: 400;
+  --base-size: 5vw;
+}
+
+    .specimen-text-brescia-xl {
+    font-family: "brescia";
+    font-variation-settings: "RIPP" 0;
+    font-weight: 400;
+  --base-size: 10vw;
+}
+
+    .specimen-text-brescia-l {
+    font-family: "brescia";
+    font-variation-settings: "RIPP" 0;
+    font-weight: 400;
+  --base-size: 3vw;
+
+    /* ANIMATION */
+    animation-name: brescia-animation;
+    animation-duration: 3s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+}
+
+    .specimen-text-brescia-m {
+    font-family: "brescia";
+    font-variation-settings: "RIPP" 0;
+    font-weight: 400;
+    text-transform: uppercase;
+  --base-size: 1.5vw;
+    }
+
+            /* -------------------- BRESCIA ANIMATION-------------------- */
+
+   @keyframes brescia-animation {
+
+    0%,
+    100% {
+        font-variation-settings: "RIPP" 0;
+        color: #6547ff;
+    }
+
+    50% {
+        font-variation-settings: "RIPP" 100;
+        color: #ff7490;
+    }
+}
 
     /* -------------------- VIDEO STYLES -------------------- */
 
