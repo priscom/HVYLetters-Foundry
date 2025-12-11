@@ -252,7 +252,7 @@ TRY ME
       span.classList.add("revealed");
     }, delay);
   });
-
+// ------------------- TYPETESTER BOX SNAPS TO GRID -------------------
 // snapp all boxes to grid (just using with specimen now)
 // this is super fun, it takes the value which is defined below as the innerWidth, 
 // defines that as maxWidth which is then used as the width of the tester, but rounded to a multiple of 40
@@ -264,8 +264,10 @@ TRY ME
 function updateTesterWidth() {
   //looks for the class type-tester
   const tester = document.querySelector(".type-tester");
-  //sets max width os the window width - 80 becasue my margins are 40px
+  //sets max width of the window width - 80 becasue my margins are 40px
   const maxWidth = window.innerWidth - 80;
+  
+  // uses the rounded number from snapToGrid
   // adds inner width as the maxWidth value for the function
   tester.style.width = snapToGrid(maxWidth) + "px";
 }
