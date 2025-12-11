@@ -13,15 +13,22 @@
     scroll-behavior: smooth;
 }
 
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
     /* -------------------- ROOT SET UP (VARIABLES ETC.) -------------------- */
+
+
 
         :root {
     --gradient-angle: 0deg;
     --gradient-angle-back: 60deg;
     --box-border-color: #6547ff;
-    --box-border-gradient: linear-gradient(var(--gradient-angle), #000000 0%, #6547ff 50%, #000000 100%);
-    --box-border-gradient-back: linear-gradient(var(--gradient-angle-back), #000000 0%, #6547ff 50%, #000000 100%);
-    --specimen-button-gradient: linear-gradient(90deg, #000000 0%, #6547ff 100%);
+    --box-border-gradient: linear-gradient(var(--gradient-angle), #1a0a12 0%, #6547ff 50%, #1a0a12 100%);
+    --box-border-gradient-back: linear-gradient(var(--gradient-angle-back), #1a0a12 0%, #6547ff 50%, #1a0a12 100%);
+    --specimen-button-gradient: linear-gradient(90deg, #1a0a12 0%, #6547ff 100%);
     --box-border-width: 2px;
     --posX: 20px;
     --posY: 20px;
@@ -30,12 +37,34 @@
     animation: rotateGradient 20s linear infinite;
 }
 
-    /* -------------------- PROPERTIES FOR ANIMATION -------------------- */
+
+
+    /* -------------------- PROPERTIES FOR ANIMATION (NEED TO BE CALLED EARLY SO THAT VALUE IS READ)-------------------- */
 
 @property --grow {
   syntax: "<number>";
   inherits: true;
   initial-value: 1;
+}
+
+@property --gradient-angle {
+  syntax: "<angle>";
+  inherits: false;
+  initial-value: 0deg;
+}
+@property --gradient-angle-back {
+  syntax: "<angle>";
+  inherits: false;
+  initial-value: 60deg;
+}
+
+    /* -------------------- GRADIENT ANIMATION -------------------- */
+
+@keyframes rotateGradient {
+  to {
+    --gradient-angle: 360deg;
+    --gradient-angle-back: 420deg;
+  }
 }
 
     /* -------------------- FONTS -------------------- */
@@ -56,11 +85,17 @@
     font-weight: 400;
 }
 
+@font-face {
+    font-family: 'ronzino';
+    src: url('../fonts/Ronzino-Bold.woff2') format('woff2');
+    font-weight: 700;
+}
+
     /* -------------------- BODY -------------------- */
 
     body {
-    background-color: #000000;
-    color: #000000;
+    background-color: #1a0a12;
+    color: #7cd68c;
     margin: 0;
     padding: 0;
     /* background-image: 
@@ -268,10 +303,10 @@ background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/s
 
     /* -------------------- BOX OVERIDE FOR MENU (TO MAKE FLEX WORK) -------------------- */
 .menu-box .box {
-  height: 100% !important;      /* let flex parent control the height */
-  width: 100%;       /* this one is OK */
-  padding: 0;        /* or reduce if the padding is blowing things open */
-  pointer-events: auto;  /* so hover/click feels normal in nav */
+  height: 100% !important;      /* I think I need the important, wasn't working before*/
+  width: 100%;
+  padding: 0;
+  pointer-events: auto; 
 }
 
     /* -------------------- SPECIMEN STYLES -------------------- */
@@ -325,20 +360,6 @@ transition: flex 0.3s ease, --grow 0.3s ease;
      transition: flex 0.3s ease, --grow 0.3s ease;
 }
 
-.specimen-button {
-    /* background-color: rgb(255, 0, 230); */
-    background-image: var(--specimen-button-gradient);
-    display: flex;
-    flex: 1;
-    flex-direction: row;
-    justify-content: flex-end;
-    width: 100%;
-        min-height: 100%; 
-    height: auto;  
-    border-radius: 9999px;
-    align-items: center;
-     transition: flex 0.3s ease;
-}
 
 .specimen-headfoot:hover {
     flex: 2;
@@ -387,15 +408,66 @@ transition: flex 0.3s ease, --grow 0.3s ease;
     }
 
             .specimen-text-button {
-  display: flex;
+  font-family: ronzino;
+                display: flex;
   align-items: center;       
-  justify-content: flex-end; 
-  text-align: right;
+  justify-content: center; 
+  text-align: center;
+  color: #6547ff;
   font-weight: 400;
-  --base-size: 1.5vw;
+  --base-size: 3.5vw;
   line-height: 1;
   padding: 0 40px 0 0;
+
+    /* ANIMATION */
+    animation-name: button-animation;
+    animation-duration: .5s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
         }
+
+          @keyframes button-animation {
+
+    0%,
+    100% {
+        color: #6547ff;
+    }
+
+    50% {
+        color: #ff7490;
+    }
+}
+
+    /* -------------------- SPECIMEN IMAGE STYLES -------------------- */
+
+.specimen-image {
+--base-size: 40vw;
+
+display: block;
+width: calc(var(--base-size) * var(--grow));
+height: auto;
+object-fit: contain; /* fill stretches and fit crops */
+/* transform: scale(var(--grow)); scale image using grow variable */
+/* transition: width 0.3s ease; */ /* this makes scaliong look weird */
+}
+
+    /* -------------------- PRISMATIC SPECIMEN IMAGE STYLES -------------------- */
+
+    .specimen-image-prismatic-header {
+        --base-size: 40vw;
+    }
+
+        .specimen-image-prismatic-xl {
+        --base-size: 30vw;
+    }
+
+            .specimen-image-prismatic-l {
+        --base-size: 25vw;
+    }
+
+                .specimen-image-prismatic-m {
+        --base-size: 60vw;
+    }
 
     /* -------------------- FONT SPECIFIC SPECIMEN TEXT STYLES -------------------- */
         /* -------------------- CALTROP -------------------- */

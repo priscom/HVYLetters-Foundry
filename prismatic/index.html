@@ -38,7 +38,8 @@ body {
     background-image: 
     linear-gradient(#ffffff 1px, transparent 1px),
     linear-gradient(90deg, #ffffff 1px, transparent 1px);
-     /* grid size */
+     
+    /* -------------------- GRID (MAKE SURE TO SYNC WITH OTHERS IF CHANGE (COULD MAYBE DO VW)) -------------------- */
   background-size: 40px 40px;
   background-position-x: left;
   background-position-y: top;
@@ -55,8 +56,8 @@ body {
     font-size: 80px;
     color: #FFFFFF;
     text-align: left;
-    margin-top: 0px;
-    margin-bottom: 40px;
+    margin-top: -7.5px;
+    margin-bottom: 47.5px;
     margin-left: 40px;
     line-height: 1;
 }
@@ -66,7 +67,7 @@ body {
     font-size: 40px;
     color: #FFFFFF;
     text-align: left;
-    margin-top: 0px;
+    margin-top: -3px;
     margin-bottom: 0px;
     margin-left: 40px;
     margin-right: 40px;
@@ -79,27 +80,30 @@ body {
     font-size: 40px;
     color: #FFFFFF;
     text-align: left;
-    margin-top: 36.5px;
+    margin-top: -3.5px;
     margin-left: 40px;
     line-height: 1;
 }
   
-/* word wrapper: keeps words from breaking mid-word */
+/* ------------------- WORD WRAPPER (KEEPS WORDS FROM BREAKING IN SPAN) ------------------- */
 .prismatic .word {
   display: inline-block;
   white-space: nowrap;
 }
 
-/* ALL characters (letters + spaces) */
+/* ------------------- INDIVIDUAL CHARACTERS (ALL INDIVIDUAL CHARACTERS IN THE PRISMATIC STYLE) ------------------- */
 .prismatic .char {
   display: inline-block;
-  min-width: 1em;            /* your square cell */
+   /* keeps space spaces from collapsing by setting min width only works cause all glyphs same size */
+  min-width: 1em;           
   opacity: 0;
-  transform: translateY(-10px) scale(.1);
+  transform: translateY(-100px) scale(.1);
   transition:
     transform .4s ease-out,
     opacity .4s ease-out;
 }
+
+/* ------------------- HOVER AND BASE LOAD EFFECT ------------------- */
 
 .prismatic .char.revealed {
   opacity: 1;
@@ -114,12 +118,12 @@ body {
 }
 
 
-
+/* ------------------- NAVIGATION ------------------- */
 
     .nav {
       display: flex;
       flex-direction: row;
-      gap: 0;
+      gap: 10;
       justify-content: space-between;
       padding-top: 40px;
     }
@@ -129,6 +133,8 @@ body {
       gap: 0;
     }
 
+    /* ------------------- TYPE TESTER ------------------- */
+
 .type-tester {
   font-family: 'prismatic', sans-serif;
   font-size: 80px;
@@ -136,23 +142,20 @@ body {
   background: black;
   border: 1px solid white;
 
-  margin: 40px;
+  margin-left: 40px;
+  margin-top: 43.5px;
+  margin-right: 40px;
   padding: 40px;
 
- width: clamp(
-    calc(40px * 6),
-    calc(100vw - 80px),
-    calc(40px * 30)
-  );
   box-sizing: border-box;
 
   line-height: 1;
   outline: none;
+/* Text wrapping stuff */
+  white-space: normal;     
+  overflow-wrap: break-word; 
 
-  white-space: normal;     /* allow wrapping */
-  overflow-wrap: break-word; /* break long words if needed */
-
-  text-transform: uppercase; /* force uppercase output */
+  text-transform: uppercase;
 }
 
 
@@ -163,27 +166,31 @@ body {
 
 <body>
   <div class="nav">
+    <a href="../index.html">
 <h1 class="title"> HVY </h1>
+    </a>
 <div class="nav-column">
 <p class="nav-text"> STUDIO </p>
 <p class="nav-text"> ABOUT </p>
   </div>
 </div>
 <h1 class="title"> PRISMATIC </h1>
-<p class="prismatic" id="my-element">
+<p class="prismatic" id="prismatic-description">
   <span>PRISMATIC IS A THREE-DIMENSIONAL TYPEFACE BUILT FROM A STRICT MODULAR GRID AND SHAPED THROUGH PRISMATIC RUSTICATION. EVERY FORM IS CONSTRUCTED AS A RELIEF SHARP EDGES ANGLED CUTS AND FACETS DESIGNED TO WORK WITH REAL LIGHT. IT FUNCTIONS AS A SPATIAL WRITING SYSTEML ETTERFORMS THAT EXIST AS OBJECTS FIRST GRAPHICS SECOND. ORIGINALLY INSPIRED BY A FRAGMENT OF STONE LETTERING ON THE RHEIN UNION HALL IN BERLIN PRISMATIC EXPANDS A HANDFUL OF SURVIVING CHARACTERS INTO A COMPLETE SET. THE TYPEFACE ISNT A LITERAL REVIVAL. INSTEAD IT USES THE MATERIAL LOGIC OF CARVED LETTERFORMS DEPTH SHADOW PRESSURE AND STRUCTURE TO BUILD SOMETHING NEW.</span>
 </p>
 <div class="type-tester" contenteditable="true">
 TRY ME
 </div>
 <script>
+
+  // ------------------- SPLIT TEXT INTO SPANS FOR ANIMATION -------------------
   // get elemnt by ID
-  const element = document.getElementById("my-element");
+  const element = document.getElementById("prismatic-description");
   // gets what ever text was inside the element, textContent is a property
   const text = element.textContent;
   // clears the content so script can rewrite it
   element.textContent = "";
-
+// ------------------- SPLITS THE TEXT INTO WORDS (BASICALLY JUST CLUMPS OF LETTERS DIVIDED BY SPACES) -------------------
   // splits the paragraph into words each word is seperated by a space (in quotes)
   const words = text.split(" ");
   // stores each word as a span
@@ -196,6 +203,8 @@ TRY ME
     const wordSpan = document.createElement("span");
     // and gives it the class "word" can use this 
     wordSpan.classList.add("word");
+
+    // ------------------- GETS CHARACHTERS -------------------
 
     // seperate letters 
     // goes through every charachter in the word class
