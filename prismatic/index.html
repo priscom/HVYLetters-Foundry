@@ -177,7 +177,7 @@ body {
 </div>
 <h1 class="title"> PRISMATIC </h1>
 <p class="prismatic" id="prismatic-description">
-  <span>PRISMATIC IS A THREE-DIMENSIONAL TYPEFACE BUILT FROM A STRICT MODULAR GRID AND SHAPED THROUGH PRISMATIC RUSTICATION. EVERY FORM IS CONSTRUCTED AS A RELIEF SHARP EDGES ANGLED CUTS AND FACETS DESIGNED TO WORK WITH REAL LIGHT. IT FUNCTIONS AS A SPATIAL WRITING SYSTEML ETTERFORMS THAT EXIST AS OBJECTS FIRST GRAPHICS SECOND. ORIGINALLY INSPIRED BY A FRAGMENT OF STONE LETTERING ON THE RHEIN UNION HALL IN BERLIN PRISMATIC EXPANDS A HANDFUL OF SURVIVING CHARACTERS INTO A COMPLETE SET. THE TYPEFACE ISNT A LITERAL REVIVAL. INSTEAD IT USES THE MATERIAL LOGIC OF CARVED LETTERFORMS DEPTH SHADOW PRESSURE AND STRUCTURE TO BUILD SOMETHING NEW.</span>
+  <span>PRISMATIC      IS A THREE-DIMENSIONAL TYPEFACE BUILT FROM A STRICT MODULAR GRID AND SHAPED THROUGH PRISMATIC RUSTICATION. EVERY FORM IS CONSTRUCTED AS A RELIEF SHARP EDGES ANGLED CUTS AND FACETS DESIGNED TO WORK WITH REAL LIGHT. IT FUNCTIONS AS A SPATIAL WRITING SYSTEML ETTERFORMS THAT EXIST AS OBJECTS FIRST GRAPHICS SECOND. ORIGINALLY INSPIRED BY A FRAGMENT OF STONE LETTERING ON THE RHEIN UNION HALL IN BERLIN PRISMATIC EXPANDS A HANDFUL OF SURVIVING CHARACTERS INTO A COMPLETE SET. THE TYPEFACE ISNT A LITERAL REVIVAL. INSTEAD IT USES THE MATERIAL LOGIC OF CARVED LETTERFORMS DEPTH SHADOW PRESSURE AND STRUCTURE TO BUILD SOMETHING NEW.</span>
 </p>
 <div class="type-tester" contenteditable="true">
 TRY ME
@@ -231,13 +231,14 @@ TRY ME
     element.appendChild(wordSpan);
 
     // add a space after each word except for the last
-    // the word index is an array of words, this goes through and says that each word has a space inbetween them except for the last word of the array
+    // the word index is an index with the position of the words, this goes through and says that each word has a space inbetween them except for the last word of the array
     if (wordIndex < words.length - 1) {
       // this adds as spaceSpan inbetween each word
       const spaceSpan = document.createElement("span");
       // gives the spaceSpan the "char" class
       spaceSpan.classList.add("char");
       // reads the html and replaces the space span with a non-breaking space character
+      // if non breaking space isn't used then the space collapses
       spaceSpan.innerHTML = "&nbsp;";
       //adds it to the element so that it goes inbetween the word classes
       element.appendChild(spaceSpan);
