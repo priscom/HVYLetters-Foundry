@@ -192,14 +192,18 @@ TRY ME
   // clears the content so script can rewrite it
   element.textContent = "";
 // ------------------- SPLITS THE TEXT INTO WORDS (BASICALLY JUST CLUMPS OF LETTERS DIVIDED BY SPACES) -------------------
+// ------------------- THIS KEEPS THE SPAN EFFECT FROM BREAKING WORDS APART -------------------
+// I had trouble finding documentation that helped with this so I did querie ai on what would be the best method to do this. But also doing my best to understand it and not just copy and paste. 
   // splits the paragraph into words each word is seperated by a space (in quotes)
   const words = text.split(" ");
   // stores each word as a span
   const allChars = [];
 
 // seperate words for text wrapping 
-// had to ask the AI about this one because I couldn't find a reference or figure it out on my own, tried to do a version of the charachter spans but it didn't work
-  words.forEach((word, wIndex) => {
+// word index stores the words position. so 0 is the first and so on
+//pulls from const words text split above.
+// rund this function for each word in the array.
+  words.forEach((word, wordIndex) => {
     //adds a span called wordSpan for each word created above
     const wordSpan = document.createElement("span");
     // and gives it the class "word" can use this 
@@ -219,7 +223,7 @@ TRY ME
       // adds thge charchter span into the word span
       wordSpan.appendChild(charSpan);
       // adds all the charachters so they can be animated with the random animation independently 
-      // had to ask AI, this was working before the word grouping, but after I was just getting the spaces. I had trouble trying to reverse engineer it.
+      // had to ask AI the best method for doing this (not copy and pasted), this was working before the word grouping, but after I was just getting the spaces.
       // I tried to just target char class but then I got nothing, couldn't figure out the dependancies
       allChars.push(charSpan);
     }
@@ -227,8 +231,8 @@ TRY ME
     element.appendChild(wordSpan);
 
     // add a space after each word except for the last
-    // the wIndex is an array of words, this goes through and says that each word has a space inbetween them except for the last word of the array
-    if (wIndex < words.length - 1) {
+    // the word index is an array of words, this goes through and says that each word has a space inbetween them except for the last word of the array
+    if (wordIndex < words.length - 1) {
       // this adds as spaceSpan inbetween each word
       const spaceSpan = document.createElement("span");
       // gives the spaceSpan the "char" class
